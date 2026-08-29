@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>VaaniSetu Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              red: '#C91F2B',
+              bg: '#F8F5EF',
+              text: '#334155',
+              muted: '#64748B',
+              border: '#E2E8F0'
+            },
+            status: {
+              green: '#10B981',
+              red: '#EF4444',
+              orange: '#F59E0B',
+              purple: '#8B5CF6',
+              blue: '#3B82F6',
+              teal: '#14B8A6'
+            }
+          },
+          boxShadow: {
+            'card': '0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03)',
+          },
+          borderRadius: {
+            'xl': '1rem',
+          }
+        }
+      }
+    }
+  </script>
+<style data-purpose="custom-styles">body {
+    background-color: #F8F5EF;
+    color: #334155
+    }
+/* Scrollbar styling */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px
+    }
+::-webkit-scrollbar-track {
+    background: transparent
+    }
+::-webkit-scrollbar-thumb {
+    background: #CBD5E1;
+    border-radius: 3px
+    }
+.glass-card {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2)
+    }
+.tribal-art {
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuDy0a0SgHYmWZXASxHtvY-4m3NV0QHxeUSSISkgD1uR5IGuQ9Z8-CNpXRd3n3QcfzxTEy92IDNHOdMKFIruy1f1t07w63oot7N79f2_tId8pk-WVsChHCr-W2U990JQNJRaryz2FZhGoMwL01qBmTBVUFY3Ze7bYyS7n7yGq5_eiZQgrNTe2ovRKo_LBgL-JyjjJXwvbwOcZF6PcX0nOOqkWfZadocW1OKhuoTiaQ26XxD357eriNDP_w);
+    background-size: cover;
+    background-position: bottom;
+    opacity: 0.15
+    }</style>
+</head>
+<body class="font-sans antialiased h-screen flex overflow-hidden">
+<!-- BEGIN: Sidebar -->
+<aside class="w-64 bg-white border-r border-brand-border flex flex-col justify-between h-full z-20 flex-shrink-0 relative overflow-y-auto">
+<div>
+<!-- Logo -->
+<div class="p-6 flex items-center gap-3">
+<div class="w-10 h-10 bg-brand-red rounded-lg flex items-center justify-center text-white text-xl font-bold">
+<i class="fa-solid fa-book-open"></i>
+</div>
+<div>
+<h1 class="text-xl font-bold text-gray-900 leading-tight">VaaniSetu</h1>
+<p class="text-[10px] text-brand-muted">From Translation to True Understanding</p>
+</div>
+</div>
+<!-- Navigation -->
+<nav class="px-4 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 bg-brand-red text-white rounded-lg font-medium transition-colors" href="#">
+<i class="fa-solid fa-house w-5 text-center"></i> Dashboard
+        </a>
+<a class="flex items-center gap-3 px-4 py-3 text-brand-text hover:bg-gray-50 rounded-lg font-medium transition-colors" href="#">
+<i class="fa-solid fa-person-chalkboard w-5 text-center"></i> My Lessons
+        </a>
+<a class="flex items-center gap-3 px-4 py-3 text-brand-text hover:bg-gray-50 rounded-lg font-medium transition-colors" href="#">
+<i class="fa-solid fa-diagram-project w-5 text-center"></i> Concept Map
+        </a>
+<a class="flex items-center gap-3 px-4 py-3 text-brand-text hover:bg-gray-50 rounded-lg font-medium transition-colors" href="#">
+<i class="fa-solid fa-users w-5 text-center"></i> Students
+        </a>
+<a class="flex items-center gap-3 px-4 py-3 text-brand-text hover:bg-gray-50 rounded-lg font-medium transition-colors" href="#">
+<i class="fa-solid fa-clipboard-list w-5 text-center"></i> Assessments
+        </a>
+<a class="flex items-center gap-3 px-4 py-3 text-brand-text hover:bg-gray-50 rounded-lg font-medium transition-colors" href="#">
+<i class="fa-solid fa-file-lines w-5 text-center"></i> Worksheets
+        </a>
+<a class="flex items-center gap-3 px-4 py-3 text-brand-text hover:bg-gray-50 rounded-lg font-medium transition-colors" href="#">
+<i class="fa-solid fa-layer-group w-5 text-center"></i> Flashcards
+        </a>
+<a class="flex items-center gap-3 px-4 py-3 text-brand-text hover:bg-gray-50 rounded-lg font-medium transition-colors" href="#">
+<i class="fa-solid fa-chart-pie w-5 text-center"></i> Reports
+        </a>
+<a class="flex items-center justify-between px-4 py-3 text-brand-text hover:bg-gray-50 rounded-lg font-medium transition-colors" href="#">
+<div class="flex items-center gap-3">
+<i class="fa-solid fa-message w-5 text-center"></i> Messages
+          </div>
+<span class="bg-brand-red text-white text-xs font-bold px-2 py-0.5 rounded-full">2</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-brand-text hover:bg-gray-50 rounded-lg font-medium transition-colors" href="#">
+<i class="fa-solid fa-folder-open w-5 text-center"></i> Resources
+        </a>
+<a class="flex items-center gap-3 px-4 py-3 text-brand-text hover:bg-gray-50 rounded-lg font-medium transition-colors" href="#">
+<i class="fa-solid fa-gear w-5 text-center"></i> Settings
+        </a>
+</nav>
+</div>
+<!-- Offline Widget -->
+<div class="p-6 relative z-10">
+<div class="bg-red-50 border border-red-100 rounded-xl p-4 text-center">
+<div class="flex justify-center mb-2">
+<i class="fa-solid fa-wifi text-brand-red text-xl"></i>
+</div>
+<h3 class="font-semibold text-brand-red mb-1">Offline Mode</h3>
+<p class="text-xs text-brand-muted mb-4">You are working offline.<br/>Data will sync when<br/>Internet is available.</p>
+<button class="w-full py-2 bg-white border border-brand-red text-brand-red rounded-lg font-medium text-sm hover:bg-red-50 transition-colors">
+          Sync Now
+        </button>
+</div>
+</div>
+<!-- Tribal Art Background (Bottom Left) -->
+<div class="absolute bottom-0 left-0 w-full h-48 tribal-art pointer-events-none"></div>
+</aside>
+<!-- END: Sidebar -->
+<!-- BEGIN: Main Content -->
+<main class="flex-1 flex flex-col h-full overflow-hidden relative">
+<!-- BEGIN: Top Header -->
+<header class="bg-white/80 backdrop-blur-md border-b border-brand-border h-20 flex items-center justify-between px-8 z-10 flex-shrink-0">
+<div class="flex items-center gap-4">
+<button class="text-gray-500 hover:text-gray-700">
+<i class="fa-solid fa-bars text-xl"></i>
+</button>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2 bg-red-50 text-brand-red px-4 py-2 rounded-full text-sm font-medium">
+<i class="fa-solid fa-wifi"></i> Offline Mode
+        </div>
+<div class="flex items-center gap-2 bg-green-50 text-status-green px-4 py-2 rounded-full text-sm font-medium border border-green-100">
+<i class="fa-solid fa-circle-check"></i> All Systems Operational
+        </div>
+<div class="relative ml-2">
+<button class="text-gray-500 hover:text-gray-700 relative p-2">
+<i class="fa-regular fa-bell text-xl"></i>
+<span class="absolute top-0 right-0 w-4 h-4 bg-brand-red text-white text-[10px] font-bold rounded-full flex items-center justify-center border-2 border-white">3</span>
+</button>
+</div>
+<div class="h-8 w-px bg-gray-200 mx-2"></div>
+<div class="flex items-center gap-3 cursor-pointer">
+<img alt="Meera Devi" class="w-10 h-10 rounded-full border-2 border-white shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6aaviAIXWCvYU4_85UIo2NXNfrG8G-r2cxn8GmOleAKZi90P6ZHI1fCr37zTNn3MrJ5Yeb4SoNaB9qJfWg3_Eor6Ux-aU_lywAlzW2FD7ZDNoAhhOLbBWFffZEJwZbpeKTDXcS8KqGCgohNhyCrxBGkyi-a_hJUU6ng9LPUfk4c8Jgp-In31DnSU09qp2z_AEynpHa8pyPpwi7U768dckS_qehP2F3G4cZGUevHmTJHC4dYqM0f9WXg"/>
+<div class="hidden md:block text-sm">
+<p class="font-semibold text-gray-900 leading-none">Meera Devi</p>
+<p class="text-brand-muted text-xs mt-1">Teacher</p>
+</div>
+<i class="fa-solid fa-chevron-down text-gray-400 text-xs ml-1"></i>
+</div>
+</div>
+</header>
+<!-- END: Top Header -->
+<!-- BEGIN: Dashboard Content -->
+<div class="flex-1 overflow-y-auto p-8 relative z-10">
+<!-- Welcome Section -->
+<div class="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4">
+<div>
+<h2 class="text-2xl font-bold text-gray-900 flex items-center gap-2">
+            Good Morning, Meera Devi <span class="text-2xl">☀️</span>
+</h2>
+<p class="text-brand-muted mt-1">Here's what's happening in your classroom today.</p>
+</div>
+<div class="flex items-center gap-3">
+<div class="relative">
+<select class="appearance-none bg-white border border-gray-200 rounded-lg pl-10 pr-10 py-2.5 text-sm font-medium text-gray-700 focus:outline-none focus:ring-2 focus:ring-brand-red focus:border-transparent cursor-pointer shadow-sm">
+<option>Photosynthesis</option>
+<option>Plant Life Cycle</option>
+</select>
+<div class="absolute left-3 top-1/2 -translate-y-1/2 text-status-red">
+<i class="fa-solid fa-leaf"></i>
+</div>
+<div class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">
+<i class="fa-solid fa-chevron-down text-xs"></i>
+</div>
+</div>
+<button class="bg-brand-red text-white px-6 py-2.5 rounded-lg font-medium text-sm flex items-center gap-2 hover:bg-red-700 transition-colors shadow-sm">
+<i class="fa-solid fa-play"></i> Start New Lesson
+          </button>
+</div>
+</div>
+<!-- KPI Cards Row -->
+<div class="grid grid-cols-1 md:grid-cols-5 gap-4 mb-6">
+<!-- Card 1 -->
+<div class="bg-white rounded-xl p-5 shadow-card border border-gray-100 flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-red-100 text-brand-red flex items-center justify-center text-xl flex-shrink-0">
+<i class="fa-solid fa-users"></i>
+</div>
+<div>
+<h3 class="text-2xl font-bold text-gray-900 leading-tight">24</h3>
+<p class="text-sm font-medium text-gray-700">Students</p>
+<p class="text-xs text-status-green font-medium mt-1 flex items-center gap-1">
+<i class="fa-solid fa-arrow-up"></i> 2 <span class="text-brand-muted font-normal">from last week</span>
+</p>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-white rounded-xl p-5 shadow-card border border-gray-100 flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-purple-100 text-status-purple flex items-center justify-center text-xl flex-shrink-0">
+<i class="fa-solid fa-book-open"></i>
+</div>
+<div>
+<h3 class="text-2xl font-bold text-gray-900 leading-tight">8</h3>
+<p class="text-sm font-medium text-gray-700">Lessons Taught</p>
+<p class="text-xs text-status-green font-medium mt-1 flex items-center gap-1">
+<i class="fa-solid fa-arrow-up"></i> 1 <span class="text-brand-muted font-normal">from last week</span>
+</p>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-white rounded-xl p-5 shadow-card border border-gray-100 flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-green-100 text-status-green flex items-center justify-center text-xl flex-shrink-0">
+<i class="fa-solid fa-bullseye"></i>
+</div>
+<div>
+<h3 class="text-2xl font-bold text-gray-900 leading-tight">76%</h3>
+<p class="text-sm font-medium text-gray-700">Avg. Understanding</p>
+<p class="text-xs text-status-green font-medium mt-1 flex items-center gap-1">
+<i class="fa-solid fa-arrow-up"></i> 12% <span class="text-brand-muted font-normal">from last week</span>
+</p>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="bg-white rounded-xl p-5 shadow-card border border-gray-100 flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-yellow-100 text-status-orange flex items-center justify-center text-xl flex-shrink-0">
+<i class="fa-solid fa-triangle-exclamation"></i>
+</div>
+<div>
+<h3 class="text-2xl font-bold text-gray-900 leading-tight">3</h3>
+<p class="text-sm font-medium text-gray-700 leading-tight">Concepts Need Attention</p>
+<p class="text-xs text-status-red font-medium mt-1 flex items-center gap-1">
+<i class="fa-solid fa-arrow-down"></i> 2 <span class="text-brand-muted font-normal">from last week</span>
+</p>
+</div>
+</div>
+<!-- Card 5 -->
+<div class="bg-white rounded-xl p-5 shadow-card border border-gray-100 flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-blue-100 text-status-blue flex items-center justify-center text-xl flex-shrink-0">
+<i class="fa-solid fa-arrows-rotate"></i>
+</div>
+<div>
+<h3 class="text-2xl font-bold text-gray-900 leading-tight">128</h3>
+<p class="text-sm font-medium text-gray-700">Responses Today</p>
+<p class="text-xs text-status-green font-medium mt-1 flex items-center gap-1">
+<i class="fa-solid fa-arrow-up"></i> 27% <span class="text-brand-muted font-normal">from last week</span>
+</p>
+</div>
+</div>
+</div>
+<!-- Main Grid (3 columns layout) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-6">
+<!-- Left Column: Concept Map & Distribution -->
+<div class="lg:col-span-5 flex flex-col gap-6">
+<!-- Concept Understanding Map -->
+<div class="bg-white rounded-xl shadow-card border border-gray-100 overflow-hidden flex flex-col h-[400px]">
+<div class="p-5 border-b border-gray-100 flex justify-between items-center">
+<h3 class="font-bold text-gray-900 flex items-center gap-2">
+<i class="fa-solid fa-brain text-brand-red"></i> CONCEPT UNDERSTANDING MAP
+              </h3>
+<a class="text-xs font-semibold text-brand-muted hover:text-brand-red flex items-center gap-1" href="#">
+                View Details <i class="fa-solid fa-arrow-right"></i>
+</a>
+</div>
+<div class="p-5 flex-1 overflow-y-auto">
+<table class="w-full text-sm">
+<thead>
+<tr class="text-left text-brand-muted border-b border-gray-100">
+<th class="pb-3 font-medium">Concept</th>
+<th class="pb-3 font-medium">Understanding</th>
+<th class="pb-3 font-medium text-right">Students</th>
+<th class="pb-3 font-medium text-right">Trend</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-gray-50">
+<!-- Row 1 -->
+<tr>
+<td class="py-3 flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-green-100 text-status-green flex items-center justify-center text-xs"><i class="fa-solid fa-leaf"></i></div>
+<span class="font-medium text-gray-800">Photosynthesis</span>
+</td>
+<td class="py-3">
+<div class="flex items-center gap-2">
+<div class="w-24 h-2 bg-gray-100 rounded-full overflow-hidden">
+<div class="bg-status-green h-full rounded-full" style="width: 86%"></div>
+</div>
+<span class="text-xs font-medium text-gray-600">86%</span>
+</div>
+</td>
+<td class="py-3 text-right text-gray-600">24/24</td>
+<td class="py-3 text-right text-status-green"><i class="fa-solid fa-arrow-trend-up"></i></td>
+</tr>
+<!-- Row 2 -->
+<tr>
+<td class="py-3 flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-yellow-100 text-status-orange flex items-center justify-center text-xs"><i class="fa-solid fa-sun"></i></div>
+<span class="font-medium text-gray-800">Role of Sunlight</span>
+</td>
+<td class="py-3">
+<div class="flex items-center gap-2">
+<div class="w-24 h-2 bg-gray-100 rounded-full overflow-hidden">
+<div class="bg-status-orange h-full rounded-full" style="width: 68%"></div>
+</div>
+<span class="text-xs font-medium text-gray-600">68%</span>
+</div>
+</td>
+<td class="py-3 text-right text-gray-600">24/24</td>
+<td class="py-3 text-right text-status-green"><i class="fa-solid fa-arrow-trend-up"></i></td>
+</tr>
+<!-- Row 3 -->
+<tr>
+<td class="py-3 flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-green-100 text-status-green flex items-center justify-center text-xs"><i class="fa-solid fa-leaf"></i></div>
+<span class="font-medium text-gray-800">Chlorophyll</span>
+</td>
+<td class="py-3">
+<div class="flex items-center gap-2">
+<div class="w-16 h-2 bg-gray-100 rounded-full overflow-hidden">
+<div class="bg-status-red h-full rounded-full" style="width: 41%"></div>
+</div>
+<span class="text-xs font-medium text-gray-600">41%</span>
+<span class="text-[10px] bg-red-50 text-status-red px-1.5 py-0.5 rounded font-medium ml-1">Needs Attention</span>
+</div>
+</td>
+<td class="py-3 text-right text-gray-600">12/24</td>
+<td class="py-3 text-right text-status-red"><i class="fa-solid fa-arrow-trend-down"></i></td>
+</tr>
+<!-- Row 4 -->
+<tr>
+<td class="py-3 flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-blue-100 text-status-blue flex items-center justify-center text-xs font-bold text-[10px]">CO₂</div>
+<span class="font-medium text-gray-800">Carbon Dioxide</span>
+</td>
+<td class="py-3">
+<div class="flex items-center gap-2">
+<div class="w-24 h-2 bg-gray-100 rounded-full overflow-hidden">
+<div class="bg-status-blue h-full rounded-full" style="width: 62%"></div>
+</div>
+<span class="text-xs font-medium text-gray-600">62%</span>
+</div>
+</td>
+<td class="py-3 text-right text-gray-600">18/24</td>
+<td class="py-3 text-right text-status-green"><i class="fa-solid fa-arrow-trend-up"></i></td>
+</tr>
+<!-- Row 5 -->
+<tr>
+<td class="py-3 flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-purple-100 text-status-purple flex items-center justify-center text-xs font-bold text-[10px]">O₂</div>
+<span class="font-medium text-gray-800">Oxygen Release</span>
+</td>
+<td class="py-3">
+<div class="flex items-center gap-2">
+<div class="w-24 h-2 bg-gray-100 rounded-full overflow-hidden">
+<div class="bg-status-purple h-full rounded-full" style="width: 74%"></div>
+</div>
+<span class="text-xs font-medium text-gray-600">74%</span>
+</div>
+</td>
+<td class="py-3 text-right text-gray-600">20/24</td>
+<td class="py-3 text-right text-status-green"><i class="fa-solid fa-arrow-trend-up"></i></td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Alert Banner -->
+<div class="bg-red-50 p-4 m-4 mt-0 rounded-lg flex items-center justify-between border border-red-100">
+<div class="flex items-start gap-3">
+<i class="fa-regular fa-lightbulb text-brand-red mt-1"></i>
+<div>
+<p class="text-sm font-medium text-gray-800">Chlorophyll is the concept most students are struggling with.</p>
+<p class="text-xs text-brand-muted mt-0.5">Recommended action: Re-explain with simpler examples.</p>
+</div>
+</div>
+<button class="bg-brand-red text-white px-4 py-2 rounded-lg text-xs font-medium hover:bg-red-700 transition-colors whitespace-nowrap">
+                Re-explain Now
+              </button>
+</div>
+</div>
+</div>
+<!-- Middle Column: Performance Chart & Alerts -->
+<div class="lg:col-span-4 flex flex-col gap-6">
+<!-- Class Performance Over Time -->
+<div class="bg-white rounded-xl shadow-card border border-gray-100 p-5 flex flex-col h-[400px]">
+<div class="flex justify-between items-center mb-4">
+<h3 class="font-bold text-gray-900 flex items-center gap-2">
+<i class="fa-solid fa-chart-line text-brand-red"></i> CLASS PERFORMANCE OVER TIME
+              </h3>
+<select class="text-xs border-gray-200 rounded-md py-1 pl-2 pr-6 text-gray-600 focus:ring-brand-red">
+<option>This Week</option>
+</select>
+</div>
+<div class="flex gap-4 mb-4 text-xs">
+<div class="flex items-center gap-1.5 text-gray-600 font-medium">
+<div class="w-4 h-0.5 bg-status-teal"></div> Class Average
+              </div>
+<div class="flex items-center gap-1.5 text-gray-600 font-medium">
+<div class="w-4 h-0.5 bg-status-purple border-t-2 border-dashed border-status-purple"></div> Class Participation
+              </div>
+</div>
+<!-- Placeholder for Chart -->
+<div class="flex-1 relative border-l border-b border-gray-100 pt-4 pr-2">
+<div class="absolute w-full h-full inset-0">
+<!-- Mock Chart Image -->
+<img alt="Chart Placeholder" class="w-full h-full object-contain opacity-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZYlqbSHVg_ZV3IhjHAyilp5lCtG5mUqnUtBQeiD4wVuTCddVqANG2-IfJ4_KS5uzLstnZFqmFlxNOPO-kelnRCzmrQm9H8_tWM7D_-Tct0ZfzCD-CnYxccKLfzsxiJAGyoDPvzttxx-5-4aCNicVwVwGNUpaZ2Ef25KrYTLDHS0WPlxi9Z6VI3olOFAZk_4duhME3HKxlqtNOcxUdK28fbtUkryipdj71GD1kZJbAPZr59naNAA2hdQ"/>
+<!-- CSS drawing of chart roughly matching image -->
+<div class="absolute left-0 bottom-0 w-full h-full flex flex-col justify-between text-[10px] text-gray-400 pb-6 -ml-6 text-right pr-2">
+<span>100%</span>
+<span>75%</span>
+<span>50%</span>
+<span>25%</span>
+<span>0%</span>
+</div>
+<div class="absolute bottom-0 left-0 w-full flex justify-between text-[10px] text-gray-400 pt-2 px-2">
+<span>12 May</span>
+<span>13 May</span>
+<span>14 May</span>
+<span>15 May</span>
+<span>16 May</span>
+<span>17 May</span>
+<span>18 May</span>
+</div>
+<!-- Mock SVG Lines -->
+<svg class="absolute inset-0 w-full h-full" style="padding-bottom: 24px; padding-left: 8px;">
+<!-- Grid lines -->
+<line stroke="#f1f5f9" stroke-width="1" x1="0" x2="100%" y1="20%" y2="20%"></line>
+<line stroke="#f1f5f9" stroke-width="1" x1="0" x2="100%" y1="40%" y2="40%"></line>
+<line stroke="#f1f5f9" stroke-width="1" x1="0" x2="100%" y1="60%" y2="60%"></line>
+<line stroke="#f1f5f9" stroke-width="1" x1="0" x2="100%" y1="80%" y2="80%"></line>
+<!-- Green Line (Class Average) -->
+<polyline fill="none" points="20,160 80,140 140,110 200,90 260,80 320,100 380,80" stroke="#14B8A6" stroke-width="2"></polyline>
+<!-- Green Points -->
+<circle cx="20" cy="160" fill="#14B8A6" r="4"></circle>
+<circle cx="80" cy="140" fill="#14B8A6" r="4"></circle>
+<circle cx="140" cy="110" fill="#14B8A6" r="4"></circle>
+<circle cx="200" cy="90" fill="#14B8A6" r="4"></circle>
+<circle cx="260" cy="80" fill="#14B8A6" r="4"></circle>
+<circle cx="320" cy="100" fill="#14B8A6" r="4"></circle>
+<circle cx="380" cy="80" fill="#14B8A6" r="4"></circle>
+<!-- Purple Dashed Line (Participation) -->
+<polyline fill="none" points="20,100 80,90 140,70 200,60 260,50 320,40 380,30" stroke="#8B5CF6" stroke-dasharray="4,4" stroke-width="2"></polyline>
+<!-- Purple Points -->
+<circle cx="20" cy="100" fill="#8B5CF6" r="4"></circle>
+<circle cx="80" cy="90" fill="#8B5CF6" r="4"></circle>
+<circle cx="140" cy="70" fill="#8B5CF6" r="4"></circle>
+<circle cx="200" cy="60" fill="#8B5CF6" r="4"></circle>
+<circle cx="260" cy="50" fill="#8B5CF6" r="4"></circle>
+<circle cx="320" cy="40" fill="#8B5CF6" r="4"></circle>
+<circle cx="380" cy="30" fill="#8B5CF6" r="4"></circle>
+</svg>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Quick Actions & Recent Activity -->
+<div class="lg:col-span-3 flex flex-col gap-6">
+<!-- Quick Actions -->
+<div class="bg-transparent h-[180px] flex flex-col">
+<h3 class="font-bold text-gray-900 mb-3 flex items-center gap-2 text-sm uppercase">
+<i class="fa-solid fa-bolt text-brand-red"></i> Quick Actions
+            </h3>
+<div class="grid grid-cols-2 gap-3 flex-1">
+<button class="bg-white rounded-xl shadow-sm border border-gray-100 p-3 flex items-center gap-3 hover:shadow-md transition-shadow text-left">
+<div class="w-8 h-8 rounded-lg bg-red-50 text-brand-red flex items-center justify-center flex-shrink-0">
+<i class="fa-solid fa-file-lines"></i>
+</div>
+<div class="flex-1">
+<span class="text-xs font-semibold text-gray-800 leading-tight block">Generate Worksheet</span>
+</div>
+<i class="fa-solid fa-chevron-right text-gray-300 text-xs"></i>
+</button>
+<button class="bg-white rounded-xl shadow-sm border border-gray-100 p-3 flex items-center gap-3 hover:shadow-md transition-shadow text-left">
+<div class="w-8 h-8 rounded-lg bg-purple-50 text-status-purple flex items-center justify-center flex-shrink-0">
+<i class="fa-solid fa-layer-group"></i>
+</div>
+<div class="flex-1">
+<span class="text-xs font-semibold text-gray-800 leading-tight block">Create Flashcards</span>
+</div>
+<i class="fa-solid fa-chevron-right text-gray-300 text-xs"></i>
+</button>
+<button class="bg-white rounded-xl shadow-sm border border-gray-100 p-3 flex items-center gap-3 hover:shadow-md transition-shadow text-left">
+<div class="w-8 h-8 rounded-lg bg-green-50 text-status-green flex items-center justify-center flex-shrink-0">
+<i class="fa-solid fa-clipboard-list"></i>
+</div>
+<div class="flex-1">
+<span class="text-xs font-semibold text-gray-800 leading-tight block">Start Assessment</span>
+</div>
+<i class="fa-solid fa-chevron-right text-gray-300 text-xs"></i>
+</button>
+<button class="bg-white rounded-xl shadow-sm border border-gray-100 p-3 flex items-center gap-3 hover:shadow-md transition-shadow text-left">
+<div class="w-8 h-8 rounded-lg bg-orange-50 text-status-orange flex items-center justify-center flex-shrink-0">
+<i class="fa-solid fa-chart-pie"></i>
+</div>
+<div class="flex-1">
+<span class="text-xs font-semibold text-gray-800 leading-tight block">View Reports</span>
+</div>
+</button>
+</div>
+</div>
+<!-- Recent Activity -->
+<div class="bg-white rounded-xl shadow-card border border-gray-100 p-5 flex-1 flex flex-col h-[200px]">
+<div class="flex justify-between items-center mb-4">
+<h3 class="font-bold text-gray-900 flex items-center gap-2 text-sm uppercase">
+<i class="fa-solid fa-clock-rotate-left text-brand-red"></i> Recent Activity
+              </h3>
+<a class="text-xs font-semibold text-brand-muted hover:text-brand-red flex items-center gap-1" href="#">
+                View All <i class="fa-solid fa-arrow-right"></i>
+</a>
+</div>
+<div class="flex-1 overflow-y-auto space-y-4">
+<!-- Item 1 -->
+<div class="flex gap-3">
+<div class="w-8 h-8 rounded-full bg-green-50 text-status-green flex items-center justify-center flex-shrink-0 mt-0.5">
+<i class="fa-solid fa-check"></i>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<p class="text-sm font-semibold text-gray-800">Assessment completed</p>
+<span class="text-[10px] text-gray-400">10 min ago</span>
+</div>
+<p class="text-xs text-brand-muted">Photosynthesis Quiz</p>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="flex gap-3">
+<div class="w-8 h-8 rounded-full bg-purple-50 text-status-purple flex items-center justify-center flex-shrink-0 mt-0.5">
+<i class="fa-solid fa-file-lines"></i>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<p class="text-sm font-semibold text-gray-800">Worksheet generated</p>
+<span class="text-[10px] text-gray-400">25 min ago</span>
+</div>
+<p class="text-xs text-brand-muted">Bilingual Worksheet</p>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="flex gap-3">
+<div class="w-8 h-8 rounded-full bg-orange-50 text-status-orange flex items-center justify-center flex-shrink-0 mt-0.5">
+<i class="fa-solid fa-triangle-exclamation"></i>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<p class="text-sm font-semibold text-gray-800">Concept flagged</p>
+<span class="text-[10px] text-gray-400">45 min ago</span>
+</div>
+<p class="text-xs text-brand-muted">Chlorophyll</p>
+</div>
+</div>
+<!-- Item 4 -->
+<div class="flex gap-3">
+<div class="w-8 h-8 rounded-full bg-blue-50 text-status-blue flex items-center justify-center flex-shrink-0 mt-0.5">
+<i class="fa-solid fa-book"></i>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<p class="text-sm font-semibold text-gray-800">New lesson added</p>
+<span class="text-[10px] text-gray-400">1 hour ago</span>
+</div>
+<p class="text-xs text-brand-muted">Plant Life Cycle</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Grid (3 columns for smaller charts) -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+<!-- Understanding Distribution -->
+<div class="bg-white rounded-xl shadow-card border border-gray-100 p-5">
+<h3 class="font-bold text-gray-900 mb-4 flex items-center gap-2 text-sm uppercase">
+<i class="fa-solid fa-chart-pie text-brand-red"></i> Understanding Distribution
+          </h3>
+<div class="flex items-center gap-6">
+<!-- Donut Chart Placeholder (CSS simulated) -->
+<div class="relative w-32 h-32 flex-shrink-0">
+<svg class="w-full h-full" viewbox="0 0 36 36">
+<!-- Needs Support (Red) -->
+<path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#EF4444" stroke-dasharray="25, 100" stroke-width="4"></path>
+<!-- Moderate (Orange) -->
+<path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#F59E0B" stroke-dasharray="42, 100" stroke-dashoffset="-25" stroke-width="4"></path>
+<!-- Strong (Green) -->
+<path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#10B981" stroke-dasharray="33, 100" stroke-dashoffset="-67" stroke-width="4"></path>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="text-2xl font-bold text-gray-900 leading-none">24</span>
+<span class="text-[10px] text-gray-500 font-medium mt-1">Students</span>
+</div>
+</div>
+<div class="flex-1 space-y-3">
+<div class="flex items-start gap-2">
+<div class="w-3 h-3 rounded-full bg-status-green mt-1 flex-shrink-0"></div>
+<div>
+<p class="text-sm font-semibold text-gray-800 leading-none">Strong (80-100%)</p>
+<p class="text-xs text-brand-muted mt-1">8 Students (33%)</p>
+</div>
+</div>
+<div class="flex items-start gap-2">
+<div class="w-3 h-3 rounded-full bg-status-orange mt-1 flex-shrink-0"></div>
+<div>
+<p class="text-sm font-semibold text-gray-800 leading-none">Moderate (50-79%)</p>
+<p class="text-xs text-brand-muted mt-1">10 Students (42%)</p>
+</div>
+</div>
+<div class="flex items-start gap-2">
+<div class="w-3 h-3 rounded-full bg-status-red mt-1 flex-shrink-0"></div>
+<div>
+<p class="text-sm font-semibold text-gray-800 leading-none">Needs Support (&lt;50%)</p>
+<p class="text-xs text-brand-muted mt-1">6 Students (25%)</p>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-4 bg-red-50 text-status-red rounded-lg p-2.5 text-xs font-medium flex items-center gap-2">
+<i class="fa-solid fa-user-group"></i> 6 students need extra support in at least one concept.
+          </div>
+</div>
+<!-- Confusion Alerts -->
+<div class="bg-white rounded-xl shadow-card border border-gray-100 p-5">
+<div class="flex justify-between items-center mb-4">
+<h3 class="font-bold text-gray-900 flex items-center gap-2 text-sm uppercase">
+<i class="fa-solid fa-radar text-brand-red"></i> Confusion Alerts
+            </h3>
+<a class="text-xs font-semibold text-brand-muted hover:text-brand-red flex items-center gap-1 border border-gray-200 rounded px-2 py-0.5" href="#">
+              View All <i class="fa-solid fa-arrow-right"></i>
+</a>
+</div>
+<div class="space-y-3">
+<!-- Alert 1 -->
+<div class="border border-red-100 rounded-lg p-3 hover:shadow-sm transition-shadow cursor-pointer relative">
+<span class="absolute top-3 right-3 text-gray-400"><i class="fa-solid fa-chevron-right text-xs"></i></span>
+<span class="inline-block bg-status-red text-white text-[10px] font-bold px-2 py-0.5 rounded-full mb-1">High Priority</span>
+<h4 class="text-sm font-bold text-gray-900">Chlorophyll</h4>
+<p class="text-xs text-brand-muted mb-2">12 students showing repeated confusion</p>
+<div class="flex items-center gap-3">
+<div class="flex-1">
+<div class="flex justify-between text-[10px] mb-1">
+<span class="font-medium text-gray-700">Understanding: 41%</span>
+</div>
+<div class="w-full h-1.5 bg-gray-100 rounded-full overflow-hidden">
+<div class="bg-status-red h-full rounded-full" style="width: 41%"></div>
+</div>
+</div>
+<button class="text-[10px] font-semibold text-brand-red border border-red-200 bg-red-50 px-2 py-1 rounded">View Details</button>
+</div>
+</div>
+<!-- Alert 2 -->
+<div class="border border-orange-100 rounded-lg p-3 hover:shadow-sm transition-shadow cursor-pointer relative">
+<span class="absolute top-3 right-3 text-gray-400"><i class="fa-solid fa-chevron-right text-xs"></i></span>
+<span class="inline-block bg-status-orange text-white text-[10px] font-bold px-2 py-0.5 rounded-full mb-1">Medium Priority</span>
+<h4 class="text-sm font-bold text-gray-900">Role of Sunlight</h4>
+<p class="text-xs text-brand-muted mb-2">6 students showing partial understanding</p>
+<div class="flex items-center gap-3">
+<div class="flex-1">
+<div class="flex justify-between text-[10px] mb-1">
+<span class="font-medium text-gray-700">Understanding: 68%</span>
+</div>
+<div class="w-full h-1.5 bg-gray-100 rounded-full overflow-hidden">
+<div class="bg-status-orange h-full rounded-full" style="width: 68%"></div>
+</div>
+</div>
+<button class="text-[10px] font-semibold text-status-orange border border-orange-200 bg-orange-50 px-2 py-1 rounded">View Details</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Language Usage -->
+<div class="bg-white rounded-xl shadow-card border border-gray-100 p-5">
+<h3 class="font-bold text-gray-900 mb-4 flex items-center gap-2 text-sm uppercase">
+<i class="fa-solid fa-chart-bar text-brand-red"></i> Language Usage
+          </h3>
+<div class="flex items-center gap-6 mt-6">
+<!-- Donut Chart Placeholder -->
+<div class="relative w-28 h-28 flex-shrink-0">
+<svg class="w-full h-full" viewbox="0 0 36 36">
+<!-- Mundari (Pink) -->
+<path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#EC4899" stroke-dasharray="58, 100" stroke-width="6"></path>
+<!-- Hindi (Yellow) -->
+<path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#F59E0B" stroke-dasharray="33, 100" stroke-dashoffset="-58" stroke-width="6"></path>
+<!-- Bilingual (Teal) -->
+<path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#14B8A6" stroke-dasharray="9, 100" stroke-dashoffset="-91" stroke-width="6"></path>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center text-gray-400 text-2xl">
+<i class="fa-solid fa-globe"></i>
+</div>
+</div>
+<div class="flex-1 space-y-3">
+<div class="flex items-start gap-2">
+<div class="w-2.5 h-2.5 rounded-full bg-pink-500 mt-1 flex-shrink-0"></div>
+<div>
+<p class="text-sm font-semibold text-gray-800 leading-none">Mundari</p>
+<p class="text-xs text-brand-muted mt-1">14 Students (58%)</p>
+</div>
+</div>
+<div class="flex items-start gap-2">
+<div class="w-2.5 h-2.5 rounded-full bg-yellow-500 mt-1 flex-shrink-0"></div>
+<div>
+<p class="text-sm font-semibold text-gray-800 leading-none">Hindi</p>
+<p class="text-xs text-brand-muted mt-1">8 Students (33%)</p>
+</div>
+</div>
+<div class="flex items-start gap-2">
+<div class="w-2.5 h-2.5 rounded-full bg-teal-500 mt-1 flex-shrink-0"></div>
+<div>
+<p class="text-sm font-semibold text-gray-800 leading-none">Bilingual</p>
+<p class="text-xs text-brand-muted mt-1">2 Students (8%)</p>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-6 flex items-center gap-2 text-xs text-gray-600 bg-gray-50 p-2.5 rounded-lg border border-gray-100">
+<i class="fa-regular fa-comment-dots text-gray-400"></i> Students learning in their preferred language.
+          </div>
+</div>
+</div>
+<!-- Bottom Banner -->
+<div class="bg-white rounded-xl shadow-card border border-gray-100 overflow-hidden flex flex-col md:flex-row relative z-10 mb-8">
+<!-- Left Image/Promo Section -->
+<div class="bg-gradient-to-r from-brand-red to-[#9A1620] text-white p-6 md:w-1/2 flex items-center gap-4 relative overflow-hidden">
+<!-- Tribal Pattern Overlay -->
+<div class="absolute inset-0 opacity-10 bg-[url('https://placehold.co/400x200/fff/fff?text=Pattern')] bg-cover"></div>
+<div class="relative z-10 flex-shrink-0 w-24 h-24 bg-white/10 rounded-full flex items-center justify-center border-2 border-white/20">
+<img alt="Teacher Illustration" class="w-20 h-20 object-contain drop-shadow-md" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC5HdWsqfkpm9lkag9-UN-Ohq0xENczX36flRUX0u1fmVwE2vuqTZtkFH-GJShH-PUuhQalsovY10iSi8oXJc41bo7zj4Wnz7S-fd2Fu_Y38LVxTKGDhTVSwjLUM-ruaA9vrJfsyLgkP82L4txvo69UsS2D0hDGsJLuq12ttdFhU9V9Zpy4LOHTBWpy9PORv6qEGdSTJybMnXFDRXh1F1t0SXSLBkLPXzrQ4Ji1imoBJ0jQtR7Z3iCjDg"/>
+</div>
+<div class="relative z-10">
+<h3 class="text-lg font-bold mb-1">From Translation to True Understanding</h3>
+<p class="text-sm text-white/80 mb-3 leading-snug">VaaniSetu doesn't stop at translation. It ensures every child understands the concept and helps you know what to teach again.</p>
+<button class="bg-white text-brand-red px-4 py-1.5 rounded-full text-xs font-bold hover:bg-gray-50 transition-colors flex items-center gap-2 w-max">
+              Know More About VaaniSetu <i class="fa-solid fa-arrow-right"></i>
+</button>
+</div>
+</div>
+<!-- Right Status Section -->
+<div class="p-6 md:w-1/2 flex items-center justify-between">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<h4 class="font-bold text-gray-900 text-sm uppercase">Offline Status</h4>
+<i class="fa-solid fa-circle-check text-status-green"></i>
+</div>
+<p class="text-xs text-brand-muted mb-4">All core features are working offline.</p>
+<div class="flex gap-4">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded bg-gray-100 flex items-center justify-center text-gray-600"><i class="fa-solid fa-microchip"></i></div>
+<div>
+<p class="text-[10px] font-bold text-gray-800">Local AI Engine</p>
+<p class="text-[10px] text-status-green font-medium">Active</p>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded bg-gray-100 flex items-center justify-center text-gray-600"><i class="fa-solid fa-hard-drive"></i></div>
+<div>
+<p class="text-[10px] font-bold text-gray-800">Data Storage</p>
+<p class="text-[10px] text-status-green font-medium">Secure</p>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded bg-gray-100 flex items-center justify-center text-gray-600"><i class="fa-solid fa-rotate"></i></div>
+<div>
+<p class="text-[10px] font-bold text-gray-800">Sync Queue</p>
+<p class="text-[10px] text-status-teal font-medium">38 items</p>
+</div>
+</div>
+</div>
+</div>
+<div class="border-l border-gray-100 pl-6 flex flex-col items-center">
+<h4 class="font-bold text-gray-900 text-sm uppercase mb-2 w-full text-left">Next Sync</h4>
+<div class="flex items-center gap-3 mb-3 w-full">
+<div class="text-status-red text-2xl"><i class="fa-solid fa-cloud-arrow-up"></i></div>
+<div>
+<p class="text-xs text-gray-800 font-medium leading-tight">When internet is available</p>
+<p class="text-[10px] text-status-orange font-medium mt-0.5"><span class="font-bold">38</span> items pending</p>
+</div>
+</div>
+<button class="w-full bg-white border border-brand-red text-brand-red py-1.5 rounded-lg text-xs font-bold hover:bg-red-50 transition-colors">
+              Sync Now
+            </button>
+</div>
+</div>
+</div>
+</div>
+<!-- END: Dashboard Content -->
+<!-- Tribal Art Background (Bottom Right) -->
+<div class="absolute bottom-0 right-0 w-1/2 h-64 tribal-art pointer-events-none z-0 mix-blend-multiply opacity-20" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuADpp0YWQitFwf7Wu08cnMHa7J81XDes62rchxXivznitUnDI1Dqmz0G8RLWA5WPfUeilLrayVfXUo0r44DbMA8u-A01OwuC_9gix_6_CcObOE308mni76QbdehiVdliRth6byjpJZj-en2L01OYL8nlfGpc7VGvLbrcF_JE63XUzYBNKe7HWpJ4I-C3r3mfTD7gybU5YSU1A-409czQiOkvoINz0YYbMhL5sR9DKN0Rqtll3M0iGV2Rg'); background-position: bottom right; background-repeat: no-repeat; background-size: contain;"></div>
+</main>
+<!-- END: Main Content -->
+</body></html>
