@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>VaaniSetu — Students</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<script>
+    tailwind.config = { theme: { extend: {
+      fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] },
+      colors: { brand: { red:'#C91F2B', bg:'#F8F5EF', text:'#334155', muted:'#64748B', border:'#E2E8F0' },
+                status: { green:'#10B981', red:'#EF4444', orange:'#F59E0B', purple:'#8B5CF6', blue:'#3B82F6', teal:'#14B8A6' } },
+      boxShadow: { 'card':'0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -1px rgba(0,0,0,0.03)' },
+      borderRadius: { 'xl':'1rem' } } } }
+</script>
+<style>
+  body { background-color:#F8F5EF; color:#334155; }
+  ::-webkit-scrollbar { width:6px; height:6px; }
+  ::-webkit-scrollbar-track { background:transparent; }
+  ::-webkit-scrollbar-thumb { background:#CBD5E1; border-radius:3px; }
+  .tribal-art { background-image:url(https://lh3.googleusercontent.com/aida-public/AB6AXuDy0a0SgHYmWZXASxHtvY-4m3NV0QHxeUSSISkgD1uR5IGuQ9Z8-CNpXRd3n3QcfzxTEy92IDNHOdMKFIruy1f1t07w63oot7N79f2_tId8pk-WVsChHCr-W2U990JQNJRaryz2FZhGoMwL01qBmTBVUFY3Ze7bYyS7n7yGq5_eiZQgrNTe2ovRKo_LBgL-JyjjJXwvbwOcZF6PcX0nOOqkWfZadocW1OKhuoTiaQ26XxD357eriNDP_w); background-size:cover; background-position:bottom; opacity:0.15; }
+  @media (max-width:1024px){ #layout-sidebar{ position:fixed; left:0; top:0; transform:translateX(-100%); transition:transform .3s ease; z-index:40; } body.sidebar-open #layout-sidebar{ transform:translateX(0); } body.sidebar-open::after{ content:''; position:fixed; inset:0; background:rgba(0,0,0,.4); z-index:30; } }
+</style>
+</head>
+<body class="font-sans antialiased h-screen flex overflow-hidden" data-page="students">
+  <aside id="layout-sidebar"></aside>
+  <main class="flex-1 flex flex-col h-full overflow-hidden relative">
+    <div id="layout-topbar"></div>
+    <div class="flex-1 overflow-y-auto p-8 relative z-10">
+      <div class="mb-8">
+        <h2 class="text-2xl font-bold text-gray-900">Students</h2>
+        <p class="text-brand-muted mt-1">Monitor student learning and identify learners who need support.</p>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+        <div class="bg-white rounded-xl p-5 shadow-card border border-gray-100 flex items-center gap-4">
+          <div class="w-12 h-12 rounded-full bg-red-100 text-brand-red flex items-center justify-center text-xl flex-shrink-0"><i class="fa-solid fa-users"></i></div>
+          <div><h3 class="text-2xl font-bold text-gray-900 leading-tight">24</h3><p class="text-sm font-medium text-gray-700">Total Students</p></div>
+        </div>
+        <div class="bg-white rounded-xl p-5 shadow-card border border-gray-100 flex items-center gap-4">
+          <div class="w-12 h-12 rounded-full bg-green-100 text-status-green flex items-center justify-center text-xl flex-shrink-0"><i class="fa-solid fa-user-check"></i></div>
+          <div><h3 class="text-2xl font-bold text-gray-900 leading-tight">22</h3><p class="text-sm font-medium text-gray-700">Active</p></div>
+        </div>
+        <div class="bg-white rounded-xl p-5 shadow-card border border-gray-100 flex items-center gap-4">
+          <div class="w-12 h-12 rounded-full bg-yellow-100 text-status-orange flex items-center justify-center text-xl flex-shrink-0"><i class="fa-solid fa-hand-holding-heart"></i></div>
+          <div><h3 class="text-2xl font-bold text-gray-900 leading-tight">6</h3><p class="text-sm font-medium text-gray-700">Needs Support</p></div>
+        </div>
+        <div class="bg-white rounded-xl p-5 shadow-card border border-gray-100 flex items-center gap-4">
+          <div class="w-12 h-12 rounded-full bg-purple-100 text-status-purple flex items-center justify-center text-xl flex-shrink-0"><i class="fa-solid fa-gauge-high"></i></div>
+          <div><h3 class="text-2xl font-bold text-gray-900 leading-tight">76%</h3><p class="text-sm font-medium text-gray-700">Avg. Understanding</p></div>
+        </div>
+      </div>
+
+      <div class="flex flex-col md:flex-row md:items-center gap-3 mb-6">
+        <div class="relative flex-1 max-w-md">
+          <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+          <input class="w-full bg-white border border-gray-200 rounded-lg pl-10 pr-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-red" placeholder="Search students..."/>
+        </div>
+        <div class="flex items-center gap-2 flex-wrap">
+          <button class="px-4 py-2 rounded-lg text-sm font-medium bg-white border border-gray-200 text-brand-text hover:bg-gray-50">Class: All</button>
+          <button class="px-4 py-2 rounded-lg text-sm font-medium bg-white border border-gray-200 text-brand-text hover:bg-gray-50">Performance</button>
+          <button class="px-4 py-2 rounded-lg text-sm font-medium bg-white border border-gray-200 text-brand-text hover:bg-gray-50">Status</button>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-xl border border-gray-100 shadow-card overflow-hidden">
+        <table class="w-full text-sm">
+          <thead class="bg-gray-50 text-brand-muted text-left">
+            <tr>
+              <th class="px-5 py-3 font-medium">Student</th><th class="px-5 py-3 font-medium">Class</th>
+              <th class="px-5 py-3 font-medium">Understanding</th><th class="px-5 py-3 font-medium">Attendance</th>
+              <th class="px-5 py-3 font-medium">Last Active</th><th class="px-5 py-3 font-medium">Status</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-100">
+            <tr class="hover:bg-gray-50 cursor-pointer" onclick="location.href='students-profile.html?id=1'">
+              <td class="px-5 py-3"><div class="flex items-center gap-3"><div class="w-9 h-9 rounded-full bg-brand-red text-white flex items-center justify-center font-semibold text-sm">AS</div><span class="font-medium text-gray-900">Aarav Sharma</span></div></td>
+              <td class="px-5 py-3 text-brand-muted">6A</td>
+              <td class="px-5 py-3"><span class="font-semibold text-gray-900">86%</span></td>
+              <td class="px-5 py-3 text-brand-muted">94%</td>
+              <td class="px-5 py-3 text-brand-muted">Today</td>
+              <td class="px-5 py-3"><span class="text-xs font-medium px-2.5 py-1 rounded-full bg-green-50 text-status-green">Strong</span></td>
+            </tr>
+            <tr class="hover:bg-gray-50 cursor-pointer" onclick="location.href='students-profile.html?id=2'">
+              <td class="px-5 py-3"><div class="flex items-center gap-3"><div class="w-9 h-9 rounded-full bg-status-purple text-white flex items-center justify-center font-semibold text-sm">AS</div><span class="font-medium text-gray-900">Ananya Singh</span></div></td>
+              <td class="px-5 py-3 text-brand-muted">6A</td>
+              <td class="px-5 py-3"><span class="font-semibold text-gray-900">62%</span></td>
+              <td class="px-5 py-3 text-brand-muted">89%</td>
+              <td class="px-5 py-3 text-brand-muted">Yesterday</td>
+              <td class="px-5 py-3"><span class="text-xs font-medium px-2.5 py-1 rounded-full bg-red-50 text-status-red">Needs Support</span></td>
+            </tr>
+            <tr class="hover:bg-gray-50 cursor-pointer" onclick="location.href='students-profile.html?id=3'">
+              <td class="px-5 py-3"><div class="flex items-center gap-3"><div class="w-9 h-9 rounded-full bg-status-blue text-white flex items-center justify-center font-semibold text-sm">RK</div><span class="font-medium text-gray-900">Rohan Kumar</span></div></td>
+              <td class="px-5 py-3 text-brand-muted">6B</td>
+              <td class="px-5 py-3"><span class="font-semibold text-gray-900">74%</span></td>
+              <td class="px-5 py-3 text-brand-muted">91%</td>
+              <td class="px-5 py-3 text-brand-muted">Today</td>
+              <td class="px-5 py-3"><span class="text-xs font-medium px-2.5 py-1 rounded-full bg-green-50 text-status-green">Strong</span></td>
+            </tr>
+            <tr class="hover:bg-gray-50 cursor-pointer" onclick="location.href='students-profile.html?id=4'">
+              <td class="px-5 py-3"><div class="flex items-center gap-3"><div class="w-9 h-9 rounded-full bg-status-teal text-white flex items-center justify-center font-semibold text-sm">DP</div><span class="font-medium text-gray-900">Diya Patel</span></div></td>
+              <td class="px-5 py-3 text-brand-muted">6B</td>
+              <td class="px-5 py-3"><span class="font-semibold text-gray-900">58%</span></td>
+              <td class="px-5 py-3 text-brand-muted">85%</td>
+              <td class="px-5 py-3 text-brand-muted">2 days ago</td>
+              <td class="px-5 py-3"><span class="text-xs font-medium px-2.5 py-1 rounded-full bg-yellow-50 text-status-orange">Monitoring</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+  <script src="app.js"></script>
+</body></html>

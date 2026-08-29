@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>VaaniSetu — Concept Map</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<script>
+    tailwind.config = { theme: { extend: {
+      fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] },
+      colors: { brand: { red:'#C91F2B', bg:'#F8F5EF', text:'#334155', muted:'#64748B', border:'#E2E8F0' },
+                status: { green:'#10B981', red:'#EF4444', orange:'#F59E0B', purple:'#8B5CF6', blue:'#3B82F6', teal:'#14B8A6' } },
+      boxShadow: { 'card':'0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -1px rgba(0,0,0,0.03)' },
+      borderRadius: { 'xl':'1rem' } } } }
+</script>
+<style>
+  body { background-color:#F8F5EF; color:#334155; }
+  ::-webkit-scrollbar { width:6px; height:6px; }
+  ::-webkit-scrollbar-track { background:transparent; }
+  ::-webkit-scrollbar-thumb { background:#CBD5E1; border-radius:3px; }
+  .tribal-art { background-image:url(https://lh3.googleusercontent.com/aida-public/AB6AXuDy0a0SgHYmWZXASxHtvY-4m3NV0QHxeUSSISkgD1uR5IGuQ9Z8-CNpXRd3n3QcfzxTEy92IDNHOdMKFIruy1f1t07w63oot7N79f2_tId8pk-WVsChHCr-W2U990JQNJRaryz2FZhGoMwL01qBmTBVUFY3Ze7bYyS7n7yGq5_eiZQgrNTe2ovRKo_LBgL-JyjjJXwvbwOcZF6PcX0nOOqkWfZadocW1OKhuoTiaQ26XxD357eriNDP_w); background-size:cover; background-position:bottom; opacity:0.15; }
+  @media (max-width:1024px){ #layout-sidebar{ position:fixed; left:0; top:0; transform:translateX(-100%); transition:transform .3s ease; z-index:40; } body.sidebar-open #layout-sidebar{ transform:translateX(0); } body.sidebar-open::after{ content:''; position:fixed; inset:0; background:rgba(0,0,0,.4); z-index:30; } }
+</style>
+</head>
+<body class="font-sans antialiased h-screen flex overflow-hidden" data-page="concept-map">
+  <aside id="layout-sidebar"></aside>
+  <main class="flex-1 flex flex-col h-full overflow-hidden relative">
+    <div id="layout-topbar"></div>
+    <div class="flex-1 overflow-y-auto p-8 relative z-10">
+      <div class="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4">
+        <div>
+          <h2 class="text-2xl font-bold text-gray-900">Concept Understanding Map</h2>
+          <p class="text-brand-muted mt-1">Visualize how students connect and understand concepts.</p>
+        </div>
+        <div class="flex items-center gap-3">
+          <select class="appearance-none bg-white border border-gray-200 rounded-lg px-4 py-2.5 text-sm font-medium text-gray-700 focus:outline-none focus:ring-2 focus:ring-brand-red cursor-pointer shadow-sm">
+            <option>Science · Class 6A</option><option>Math · Class 6B</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <!-- Map -->
+        <div class="lg:col-span-2 bg-white rounded-xl border border-gray-100 shadow-card p-6">
+          <div class="flex flex-col items-center">
+            <!-- Root -->
+            <div class="w-44 text-center bg-brand-red text-white rounded-xl py-4 px-6 shadow-sm">
+              <i class="fa-solid fa-leaf text-2xl mb-1"></i>
+              <p class="font-bold text-lg">Photosynthesis</p>
+            </div>
+            <div class="w-px h-8 bg-gray-300"></div>
+            <div class="grid grid-cols-2 gap-5 w-full">
+              <!-- child node -->
+              <div class="bg-red-50 border border-red-100 rounded-xl p-4 flex flex-col items-center text-center">
+                <div class="w-10 h-10 rounded-full bg-white text-brand-red flex items-center justify-center mb-2"><i class="fa-solid fa-sun"></i></div>
+                <p class="font-semibold text-gray-900">Sunlight</p>
+                <p class="text-xs text-brand-muted mt-1">82% understood</p>
+                <p class="text-xs text-status-green mt-1">21 students</p>
+              </div>
+              <div class="bg-red-50 border border-red-100 rounded-xl p-4 flex flex-col items-center text-center">
+                <div class="w-10 h-10 rounded-full bg-white text-brand-red flex items-center justify-center mb-2"><i class="fa-solid fa-palette"></i></div>
+                <p class="font-semibold text-gray-900">Chlorophyll</p>
+                <p class="text-xs text-brand-muted mt-1">54% understood</p>
+                <p class="text-xs text-status-red mt-1">12 students stuck</p>
+              </div>
+              <div class="bg-red-50 border border-red-100 rounded-xl p-4 flex flex-col items-center text-center">
+                <div class="w-10 h-10 rounded-full bg-white text-brand-red flex items-center justify-center mb-2"><i class="fa-solid fa-wind"></i></div>
+                <p class="font-semibold text-gray-900">Carbon Dioxide</p>
+                <p class="text-xs text-brand-muted mt-1">78% understood</p>
+                <p class="text-xs text-status-green mt-1">20 students</p>
+              </div>
+              <div class="bg-red-50 border border-red-100 rounded-xl p-4 flex flex-col items-center text-center">
+                <div class="w-10 h-10 rounded-full bg-white text-brand-red flex items-center justify-center mb-2"><i class="fa-solid fa-wind"></i></div>
+                <p class="font-semibold text-gray-900">Oxygen</p>
+                <p class="text-xs text-brand-muted mt-1">88% understood</p>
+                <p class="text-xs text-status-green mt-1">23 students</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- AI Insight -->
+        <div class="bg-white rounded-xl border border-gray-100 shadow-card p-6 flex flex-col">
+          <div class="flex items-center gap-2 mb-4">
+            <span class="w-9 h-9 rounded-lg bg-brand-red text-white flex items-center justify-center"><i class="fa-solid fa-wand-magic-sparkles"></i></span>
+            <h3 class="font-bold text-gray-900 text-lg">AI Insight</h3>
+          </div>
+          <p class="text-sm text-brand-text bg-red-50 border border-red-100 rounded-lg p-4 mb-4">
+            <span class="font-semibold text-brand-red">12 students</span> are struggling with <span class="font-semibold">Chlorophyll</span>. Consider a short visual recap using the local-language animation.
+          </p>
+          <div class="space-y-3 mb-6">
+            <div class="flex items-center justify-between text-sm"><span class="text-brand-muted">Overall Mastery</span><span class="font-semibold text-gray-900">75%</span></div>
+            <div class="w-full h-2 bg-gray-100 rounded-full overflow-hidden"><div class="h-full bg-brand-red rounded-full" style="width:75%"></div></div>
+            <div class="flex items-center justify-between text-sm"><span class="text-brand-muted">Concepts At Risk</span><span class="font-semibold text-status-red">1</span></div>
+          </div>
+          <button class="mt-auto w-full py-2.5 bg-brand-red text-white rounded-lg font-medium text-sm hover:bg-red-700 transition-colors">View Students</button>
+        </div>
+      </div>
+    </div>
+  </main>
+  <script src="app.js"></script>
+</body></html>

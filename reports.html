@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>VaaniSetu — Reports</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<script>
+    tailwind.config = { theme: { extend: {
+      fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] },
+      colors: { brand: { red:'#C91F2B', bg:'#F8F5EF', text:'#334155', muted:'#64748B', border:'#E2E8F0' },
+                status: { green:'#10B981', red:'#EF4444', orange:'#F59E0B', purple:'#8B5CF6', blue:'#3B82F6', teal:'#14B8A6' } },
+      boxShadow: { 'card':'0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -1px rgba(0,0,0,0.03)' },
+      borderRadius: { 'xl':'1rem' } } } }
+</script>
+<style>
+  body { background-color:#F8F5EF; color:#334155; }
+  ::-webkit-scrollbar { width:6px; height:6px; }
+  ::-webkit-scrollbar-track { background:transparent; }
+  ::-webkit-scrollbar-thumb { background:#CBD5E1; border-radius:3px; }
+  .tribal-art { background-image:url(https://lh3.googleusercontent.com/aida-public/AB6AXuDy0a0SgHYmWZXASxHtvY-4m3NV0QHxeUSSISkgD1uR5IGuQ9Z8-CNpXRd3n3QcfzxTEy92IDNHOdMKFIruy1f1t07w63oot7N79f2_tId8pk-WVsChHCr-W2U990JQNJRaryz2FZhGoMwL01qBmTBVUFY3Ze7bYyS7n7yGq5_eiZQgrNTe2ovRKo_LBgL-JyjjJXwvbwOcZF6PcX0nOOqkWfZadocW1OKhuoTiaQ26XxD357eriNDP_w); background-size:cover; background-position:bottom; opacity:0.15; }
+  @media (max-width:1024px){ #layout-sidebar{ position:fixed; left:0; top:0; transform:translateX(-100%); transition:transform .3s ease; z-index:40; } body.sidebar-open #layout-sidebar{ transform:translateX(0); } body.sidebar-open::after{ content:''; position:fixed; inset:0; background:rgba(0,0,0,.4); z-index:30; } }
+</style>
+</head>
+<body class="font-sans antialiased h-screen flex overflow-hidden" data-page="reports">
+  <aside id="layout-sidebar"></aside>
+  <main class="flex-1 flex flex-col h-full overflow-hidden relative">
+    <div id="layout-topbar"></div>
+    <div class="flex-1 overflow-y-auto p-8 relative z-10">
+      <div class="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4">
+        <div>
+          <h2 class="text-2xl font-bold text-gray-900">Reports &amp; Analytics</h2>
+          <p class="text-brand-muted mt-1">Understand learning progress with detailed classroom insights.</p>
+        </div>
+        <button class="bg-brand-red text-white px-6 py-2.5 rounded-lg font-medium text-sm flex items-center gap-2 hover:bg-red-700 transition-colors shadow-sm self-start"><i class="fa-solid fa-plus"></i> Generate Custom Report</button>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+        <div class="bg-white rounded-xl border border-gray-100 shadow-card p-5">
+          <div class="w-11 h-11 rounded-lg bg-red-100 text-brand-red flex items-center justify-center text-lg mb-3"><i class="fa-solid fa-user-graduate"></i></div>
+          <h4 class="font-bold text-gray-900">Student Performance</h4>
+          <p class="text-sm text-brand-muted mb-4">Individual progress, scores and trends across the classroom.</p>
+          <div class="flex items-center gap-2">
+            <button class="flex-1 py-2 bg-gray-50 text-brand-text rounded-lg text-sm font-medium hover:bg-gray-100">View Report</button>
+            <button class="flex-1 py-2 bg-gray-50 text-brand-text rounded-lg text-sm font-medium hover:bg-gray-100">Export PDF</button>
+          </div>
+          <p class="text-xs text-brand-muted mt-3">Last updated 2h ago</p>
+        </div>
+        <div class="bg-white rounded-xl border border-gray-100 shadow-card p-5">
+          <div class="w-11 h-11 rounded-lg bg-purple-100 text-status-purple flex items-center justify-center text-lg mb-3"><i class="fa-solid fa-chalkboard-user"></i></div>
+          <h4 class="font-bold text-gray-900">Class Performance</h4>
+          <p class="text-sm text-brand-muted mb-4">Compare sections, attendance and participation.</p>
+          <div class="flex items-center gap-2">
+            <button class="flex-1 py-2 bg-gray-50 text-brand-text rounded-lg text-sm font-medium hover:bg-gray-100">View Report</button>
+            <button class="flex-1 py-2 bg-gray-50 text-brand-text rounded-lg text-sm font-medium hover:bg-gray-100">Export PDF</button>
+          </div>
+          <p class="text-xs text-brand-muted mt-3">Last updated yesterday</p>
+        </div>
+        <div class="bg-white rounded-xl border border-gray-100 shadow-card p-5">
+          <div class="w-11 h-11 rounded-lg bg-green-100 text-status-green flex items-center justify-center text-lg mb-3"><i class="fa-solid fa-diagram-project"></i></div>
+          <h4 class="font-bold text-gray-900">Concept Mastery</h4>
+          <p class="text-sm text-brand-muted mb-4">Which concepts are understood and which need attention.</p>
+          <div class="flex items-center gap-2">
+            <button class="flex-1 py-2 bg-gray-50 text-brand-text rounded-lg text-sm font-medium hover:bg-gray-100">View Report</button>
+            <button class="flex-1 py-2 bg-gray-50 text-brand-text rounded-lg text-sm font-medium hover:bg-gray-100">Export PDF</button>
+          </div>
+          <p class="text-xs text-brand-muted mt-3">Last updated today</p>
+        </div>
+        <div class="bg-white rounded-xl border border-gray-100 shadow-card p-5">
+          <div class="w-11 h-11 rounded-lg bg-yellow-100 text-status-orange flex items-center justify-center text-lg mb-3"><i class="fa-solid fa-clipboard-check"></i></div>
+          <h4 class="font-bold text-gray-900">Assessment Results</h4>
+          <p class="text-sm text-brand-muted mb-4">Scores, completion and item-level analysis.</p>
+          <div class="flex items-center gap-2">
+            <button class="flex-1 py-2 bg-gray-50 text-brand-text rounded-lg text-sm font-medium hover:bg-gray-100">View Report</button>
+            <button class="flex-1 py-2 bg-gray-50 text-brand-text rounded-lg text-sm font-medium hover:bg-gray-100">Export PDF</button>
+          </div>
+          <p class="text-xs text-brand-muted mt-3">Last updated 3d ago</p>
+        </div>
+        <div class="bg-white rounded-xl border border-gray-100 shadow-card p-5">
+          <div class="w-11 h-11 rounded-lg bg-blue-100 text-status-blue flex items-center justify-center text-lg mb-3"><i class="fa-solid fa-language"></i></div>
+          <h4 class="font-bold text-gray-900">Language Usage</h4>
+          <p class="text-sm text-brand-muted mb-4">Tribal & regional language adoption in lessons.</p>
+          <div class="flex items-center gap-2">
+            <button class="flex-1 py-2 bg-gray-50 text-brand-text rounded-lg text-sm font-medium hover:bg-gray-100">View Report</button>
+            <button class="flex-1 py-2 bg-gray-50 text-brand-text rounded-lg text-sm font-medium hover:bg-gray-100">Export PDF</button>
+          </div>
+          <p class="text-xs text-brand-muted mt-3">Last updated today</p>
+        </div>
+        <div class="bg-white rounded-xl border border-gray-100 shadow-card p-5">
+          <div class="w-11 h-11 rounded-lg bg-teal-100 text-status-teal flex items-center justify-center text-lg mb-3"><i class="fa-solid fa-arrow-trend-up"></i></div>
+          <h4 class="font-bold text-gray-900">Learning Progress</h4>
+          <p class="text-sm text-brand-muted mb-4">Longitudinal growth across terms and units.</p>
+          <div class="flex items-center gap-2">
+            <button class="flex-1 py-2 bg-gray-50 text-brand-text rounded-lg text-sm font-medium hover:bg-gray-100">View Report</button>
+            <button class="flex-1 py-2 bg-gray-50 text-brand-text rounded-lg text-sm font-medium hover:bg-gray-100">Export PDF</button>
+          </div>
+          <p class="text-xs text-brand-muted mt-3">Last updated 1w ago</p>
+        </div>
+      </div>
+    </div>
+  </main>
+  <script src="app.js"></script>
+</body></html>

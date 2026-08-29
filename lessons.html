@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>VaaniSetu — My Lessons</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<script>
+    tailwind.config = { theme: { extend: {
+      fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] },
+      colors: { brand: { red:'#C91F2B', bg:'#F8F5EF', text:'#334155', muted:'#64748B', border:'#E2E8F0' },
+                status: { green:'#10B981', red:'#EF4444', orange:'#F59E0B', purple:'#8B5CF6', blue:'#3B82F6', teal:'#14B8A6' } },
+      boxShadow: { 'card':'0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -1px rgba(0,0,0,0.03)' },
+      borderRadius: { 'xl':'1rem' } } } }
+</script>
+<style>
+  body { background-color:#F8F5EF; color:#334155; }
+  ::-webkit-scrollbar { width:6px; height:6px; }
+  ::-webkit-scrollbar-track { background:transparent; }
+  ::-webkit-scrollbar-thumb { background:#CBD5E1; border-radius:3px; }
+  .tribal-art { background-image:url(https://lh3.googleusercontent.com/aida-public/AB6AXuDy0a0SgHYmWZXASxHtvY-4m3NV0QHxeUSSISkgD1uR5IGuQ9Z8-CNpXRd3n3QcfzxTEy92IDNHOdMKFIruy1f1t07w63oot7N79f2_tId8pk-WVsChHCr-W2U990JQNJRaryz2FZhGoMwL01qBmTBVUFY3Ze7bYyS7n7yGq5_eiZQgrNTe2ovRKo_LBgL-JyjjJXwvbwOcZF6PcX0nOOqkWfZadocW1OKhuoTiaQ26XxD357eriNDP_w); background-size:cover; background-position:bottom; opacity:0.15; }
+  @media (max-width:1024px){ #layout-sidebar{ position:fixed; left:0; top:0; transform:translateX(-100%); transition:transform .3s ease; z-index:40; } body.sidebar-open #layout-sidebar{ transform:translateX(0); } body.sidebar-open::after{ content:''; position:fixed; inset:0; background:rgba(0,0,0,.4); z-index:30; } }
+</style>
+</head>
+<body class="font-sans antialiased h-screen flex overflow-hidden" data-page="lessons">
+  <aside id="layout-sidebar"></aside>
+  <main class="flex-1 flex flex-col h-full overflow-hidden relative">
+    <div id="layout-topbar"></div>
+    <div class="flex-1 overflow-y-auto p-8 relative z-10">
+      <div class="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4">
+        <div>
+          <h2 class="text-2xl font-bold text-gray-900">My Lessons</h2>
+          <p class="text-brand-muted mt-1">Plan, manage and continue your classroom lessons.</p>
+        </div>
+        <button class="bg-brand-red text-white px-6 py-2.5 rounded-lg font-medium text-sm flex items-center gap-2 hover:bg-red-700 transition-colors shadow-sm self-start">
+          <i class="fa-solid fa-plus"></i> Create Lesson
+        </button>
+      </div>
+
+      <!-- KPI -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+        <div class="bg-white rounded-xl p-5 shadow-card border border-gray-100 flex items-center gap-4">
+          <div class="w-12 h-12 rounded-full bg-red-100 text-brand-red flex items-center justify-center text-xl flex-shrink-0"><i class="fa-solid fa-calendar-day"></i></div>
+          <div><h3 class="text-2xl font-bold text-gray-900 leading-tight">4</h3><p class="text-sm font-medium text-gray-700">Today's Lessons</p></div>
+        </div>
+        <div class="bg-white rounded-xl p-5 shadow-card border border-gray-100 flex items-center gap-4">
+          <div class="w-12 h-12 rounded-full bg-purple-100 text-status-purple flex items-center justify-center text-xl flex-shrink-0"><i class="fa-solid fa-calendar-plus"></i></div>
+          <div><h3 class="text-2xl font-bold text-gray-900 leading-tight">8</h3><p class="text-sm font-medium text-gray-700">Upcoming</p></div>
+        </div>
+        <div class="bg-white rounded-xl p-5 shadow-card border border-gray-100 flex items-center gap-4">
+          <div class="w-12 h-12 rounded-full bg-green-100 text-status-green flex items-center justify-center text-xl flex-shrink-0"><i class="fa-solid fa-circle-check"></i></div>
+          <div><h3 class="text-2xl font-bold text-gray-900 leading-tight">24</h3><p class="text-sm font-medium text-gray-700">Completed</p></div>
+        </div>
+        <div class="bg-white rounded-xl p-5 shadow-card border border-gray-100 flex items-center gap-4">
+          <div class="w-12 h-12 rounded-full bg-yellow-100 text-status-orange flex items-center justify-center text-xl flex-shrink-0"><i class="fa-solid fa-file-pen"></i></div>
+          <div><h3 class="text-2xl font-bold text-gray-900 leading-tight">3</h3><p class="text-sm font-medium text-gray-700">Drafts</p></div>
+        </div>
+      </div>
+
+      <!-- Filters -->
+      <div class="flex items-center gap-2 mb-6 flex-wrap">
+        <button class="px-4 py-2 rounded-lg text-sm font-medium bg-brand-red text-white">All</button>
+        <button class="px-4 py-2 rounded-lg text-sm font-medium text-brand-text hover:bg-gray-50 bg-white border border-gray-200">Today</button>
+        <button class="px-4 py-2 rounded-lg text-sm font-medium text-brand-text hover:bg-gray-50 bg-white border border-gray-200">Upcoming</button>
+        <button class="px-4 py-2 rounded-lg text-sm font-medium text-brand-text hover:bg-gray-50 bg-white border border-gray-200">Completed</button>
+      </div>
+
+      <h3 class="text-lg font-semibold text-gray-900 mb-4">Today's Lessons</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 mb-10">
+        <!-- Lesson Card -->
+        <div class="bg-white rounded-xl border border-gray-100 shadow-card p-5">
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-red-50 text-brand-red">Science</span>
+            <span class="text-xs font-medium text-status-green px-2.5 py-1 rounded-full bg-green-50">In Progress</span>
+          </div>
+          <h4 class="font-bold text-gray-900 text-lg">Understanding Photosynthesis</h4>
+          <p class="text-sm text-brand-muted mb-4">Class 6A</p>
+          <div class="flex items-center gap-4 text-sm text-brand-muted mb-4">
+            <span><i class="fa-regular fa-clock mr-1"></i> 10:00 AM</span>
+            <span><i class="fa-solid fa-hourglass-half mr-1"></i> 45 min</span>
+          </div>
+          <div class="mb-4">
+            <div class="flex justify-between text-xs mb-1"><span class="font-medium text-gray-700">Progress</span><span class="font-semibold text-brand-red">75%</span></div>
+            <div class="w-full h-2 bg-gray-100 rounded-full overflow-hidden"><div class="h-full bg-brand-red rounded-full" style="width:75%"></div></div>
+          </div>
+          <button class="w-full py-2.5 bg-brand-red text-white rounded-lg font-medium text-sm hover:bg-red-700 transition-colors">Continue Lesson</button>
+        </div>
+        <div class="bg-white rounded-xl border border-gray-100 shadow-card p-5">
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-purple-50 text-status-purple">Math</span>
+            <span class="text-xs font-medium text-status-orange px-2.5 py-1 rounded-full bg-yellow-50">Scheduled</span>
+          </div>
+          <h4 class="font-bold text-gray-900 text-lg">Fractions Made Simple</h4>
+          <p class="text-sm text-brand-muted mb-4">Class 6B</p>
+          <div class="flex items-center gap-4 text-sm text-brand-muted mb-4">
+            <span><i class="fa-regular fa-clock mr-1"></i> 12:30 PM</span>
+            <span><i class="fa-solid fa-hourglass-half mr-1"></i> 40 min</span>
+          </div>
+          <div class="mb-4">
+            <div class="flex justify-between text-xs mb-1"><span class="font-medium text-gray-700">Progress</span><span class="font-semibold text-brand-red">0%</span></div>
+            <div class="w-full h-2 bg-gray-100 rounded-full overflow-hidden"><div class="h-full bg-brand-red rounded-full" style="width:0%"></div></div>
+          </div>
+          <button class="w-full py-2.5 bg-brand-red text-white rounded-lg font-medium text-sm hover:bg-red-700 transition-colors">Start Lesson</button>
+        </div>
+        <div class="bg-white rounded-xl border border-gray-100 shadow-card p-5">
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-green-50 text-status-green">Hindi</span>
+            <span class="text-xs font-medium text-status-green px-2.5 py-1 rounded-full bg-green-50">In Progress</span>
+          </div>
+          <h4 class="font-bold text-gray-900 text-lg">Storytelling & Comprehension</h4>
+          <p class="text-sm text-brand-muted mb-4">Class 6A</p>
+          <div class="flex items-center gap-4 text-sm text-brand-muted mb-4">
+            <span><i class="fa-regular fa-clock mr-1"></i> 02:00 PM</span>
+            <span><i class="fa-solid fa-hourglass-half mr-1"></i> 50 min</span>
+          </div>
+          <div class="mb-4">
+            <div class="flex justify-between text-xs mb-1"><span class="font-medium text-gray-700">Progress</span><span class="font-semibold text-brand-red">40%</span></div>
+            <div class="w-full h-2 bg-gray-100 rounded-full overflow-hidden"><div class="h-full bg-brand-red rounded-full" style="width:40%"></div></div>
+          </div>
+          <button class="w-full py-2.5 bg-brand-red text-white rounded-lg font-medium text-sm hover:bg-red-700 transition-colors">Continue Lesson</button>
+        </div>
+      </div>
+
+      <h3 class="text-lg font-semibold text-gray-900 mb-4">Upcoming Lessons</h3>
+      <div class="bg-white rounded-xl border border-gray-100 shadow-card overflow-hidden mb-10">
+        <table class="w-full text-sm">
+          <thead class="bg-gray-50 text-brand-muted text-left">
+            <tr><th class="px-5 py-3 font-medium">Subject</th><th class="px-5 py-3 font-medium">Lesson</th><th class="px-5 py-3 font-medium">Class</th><th class="px-5 py-3 font-medium">Time</th><th class="px-5 py-3 font-medium">Date</th></tr>
+          </thead>
+          <tbody class="divide-y divide-gray-100">
+            <tr><td class="px-5 py-3 font-medium text-gray-900">Science</td><td class="px-5 py-3 text-brand-text">Plant Life Cycle</td><td class="px-5 py-3 text-brand-muted">6A</td><td class="px-5 py-3 text-brand-muted">09:00 AM</td><td class="px-5 py-3 text-brand-muted">Tomorrow</td></tr>
+            <tr><td class="px-5 py-3 font-medium text-gray-900">Social Studies</td><td class="px-5 py-3 text-brand-text">Our Village</td><td class="px-5 py-3 text-brand-muted">6B</td><td class="px-5 py-3 text-brand-muted">11:00 AM</td><td class="px-5 py-3 text-brand-muted">Aug 30</td></tr>
+            <tr><td class="px-5 py-3 font-medium text-gray-900">Math</td><td class="px-5 py-3 text-brand-text">Shapes & Measurement</td><td class="px-5 py-3 text-brand-muted">6A</td><td class="px-5 py-3 text-brand-muted">01:30 PM</td><td class="px-5 py-3 text-brand-muted">Sep 01</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="text-lg font-semibold text-gray-900 mb-4">Draft Lessons</h3>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class="bg-white rounded-xl border border-dashed border-gray-300 shadow-card p-5">
+          <h4 class="font-bold text-gray-900">Water Cycle Basics</h4>
+          <p class="text-sm text-brand-muted mb-3">Class 6A · Draft</p>
+          <button class="text-sm font-medium text-brand-red hover:underline">Edit Draft</button>
+        </div>
+        <div class="bg-white rounded-xl border border-dashed border-gray-300 shadow-card p-5">
+          <h4 class="font-bold text-gray-900">Local Festivals</h4>
+          <p class="text-sm text-brand-muted mb-3">Class 6B · Draft</p>
+          <button class="text-sm font-medium text-brand-red hover:underline">Edit Draft</button>
+        </div>
+        <div class="bg-white rounded-xl border border-dashed border-gray-300 shadow-card p-5">
+          <h4 class="font-bold text-gray-900">Simple Machines</h4>
+          <p class="text-sm text-brand-muted mb-3">Class 6A · Draft</p>
+          <button class="text-sm font-medium text-brand-red hover:underline">Edit Draft</button>
+        </div>
+      </div>
+    </div>
+  </main>
+  <script src="app.js"></script>
+</body></html>

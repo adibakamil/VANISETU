@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>VaaniSetu — Settings</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<script>
+    tailwind.config = { theme: { extend: {
+      fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] },
+      colors: { brand: { red:'#C91F2B', bg:'#F8F5EF', text:'#334155', muted:'#64748B', border:'#E2E8F0' },
+                status: { green:'#10B981', red:'#EF4444', orange:'#F59E0B', purple:'#8B5CF6', blue:'#3B82F6', teal:'#14B8A6' } },
+      boxShadow: { 'card':'0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -1px rgba(0,0,0,0.03)' },
+      borderRadius: { 'xl':'1rem' } } } }
+</script>
+<style>
+  body { background-color:#F8F5EF; color:#334155; }
+  ::-webkit-scrollbar { width:6px; height:6px; }
+  ::-webkit-scrollbar-track { background:transparent; }
+  ::-webkit-scrollbar-thumb { background:#CBD5E1; border-radius:3px; }
+  .tribal-art { background-image:url(https://lh3.googleusercontent.com/aida-public/AB6AXuDy0a0SgHYmWZXASxHtvY-4m3NV0QHxeUSSISkgD1uR5IGuQ9Z8-CNpXRd3n3QcfzxTEy92IDNHOdMKFIruy1f1t07w63oot7N79f2_tId8pk-WVsChHCr-W2U990JQNJRaryz2FZhGoMwL01qBmTBVUFY3Ze7bYyS7n7yGq5_eiZQgrNTe2ovRKo_LBgL-JyjjJXwvbwOcZF6PcX0nOOqkWfZadocW1OKhuoTiaQ26XxD357eriNDP_w); background-size:cover; background-position:bottom; opacity:0.15; }
+  @media (max-width:1024px){ #layout-sidebar{ position:fixed; left:0; top:0; transform:translateX(-100%); transition:transform .3s ease; z-index:40; } body.sidebar-open #layout-sidebar{ transform:translateX(0); } body.sidebar-open::after{ content:''; position:fixed; inset:0; background:rgba(0,0,0,.4); z-index:30; } }
+</style>
+</head>
+<body class="font-sans antialiased h-screen flex overflow-hidden" data-page="settings">
+  <aside id="layout-sidebar"></aside>
+  <main class="flex-1 flex flex-col h-full overflow-hidden relative">
+    <div id="layout-topbar"></div>
+    <div class="flex-1 overflow-y-auto p-8 relative z-10">
+      <h2 class="text-2xl font-bold text-gray-900 mb-1">Settings</h2>
+      <p class="text-brand-muted mb-8">Manage your profile, preferences and account.</p>
+
+      <div class="flex flex-wrap gap-2 mb-6 border-b border-gray-200">
+        <button class="px-4 py-2.5 text-brand-red border-b-2 border-brand-red font-medium text-sm">Profile</button>
+        <button class="px-4 py-2.5 text-brand-muted hover:text-brand-text font-medium text-sm">Preferences</button>
+        <button class="px-4 py-2.5 text-brand-muted hover:text-brand-text font-medium text-sm">Notifications</button>
+        <button class="px-4 py-2.5 text-brand-muted hover:text-brand-text font-medium text-sm">Account</button>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div class="bg-white rounded-xl border border-gray-100 shadow-card p-6">
+          <h4 class="font-bold text-gray-900 mb-4">Personal Information</h4>
+          <div class="space-y-4">
+            <div><label class="text-sm font-medium text-brand-text">Full Name</label><input value="Anjali Sharma" class="mt-1 w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-brand-red"/></div>
+            <div><label class="text-sm font-medium text-brand-text">Email</label><input value="anjali@vanisetu.org" class="mt-1 w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-brand-red"/></div>
+            <div><label class="text-sm font-medium text-brand-text">School</label><input value="Government Primary School, Panna" class="mt-1 w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-brand-red"/></div>
+            <div><label class="text-sm font-medium text-brand-text">Language</label>
+              <select class="mt-1 w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-brand-red">
+                <option>English</option><option selected>Hindi</option><option>Gondi</option><option>Santhali</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-xl border border-gray-100 shadow-card p-6">
+          <h4 class="font-bold text-gray-900 mb-4">Preferences</h4>
+          <div class="space-y-4">
+            <label class="flex items-center justify-between"><span class="text-sm font-medium text-brand-text">Dark Mode</span><div class="relative inline-flex items-center"><input type="checkbox" class="sr-only peer"/><div class="w-11 h-6 bg-gray-200 peer-checked:bg-brand-red rounded-full peer-checked:after:translate-x-5 after:content-[''] after:absolute after:top-0.5 after:left-0.5 after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all"></div></div></label>
+            <label class="flex items-center justify-between"><span class="text-sm font-medium text-brand-text">Email Notifications</span><div class="relative inline-flex items-center"><input type="checkbox" checked class="sr-only peer"/><div class="w-11 h-6 bg-gray-200 peer-checked:bg-brand-red rounded-full peer-checked:after:translate-x-5 after:content-[''] after:absolute after:top-0.5 after:left-0.5 after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all"></div></div></label>
+            <label class="flex items-center justify-between"><span class="text-sm font-medium text-brand-text">Offline Mode</span><div class="relative inline-flex items-center"><input type="checkbox" checked class="sr-only peer"/><div class="w-11 h-6 bg-gray-200 peer-checked:bg-brand-red rounded-full peer-checked:after:translate-x-5 after:content-[''] after:absolute after:top-0.5 after:left-0.5 after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all"></div></div></label>
+            <div><label class="text-sm font-medium text-brand-text">Default Subject</label>
+              <select class="mt-1 w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-brand-red">
+                <option selected>Science</option><option>Mathematics</option><option>Hindi</option><option>Social Studies</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex justify-end gap-3 mt-6">
+        <button class="px-6 py-2.5 rounded-lg font-medium text-sm border border-gray-200 text-brand-text hover:bg-gray-50 bg-white">Cancel</button>
+        <button class="px-6 py-2.5 rounded-lg font-medium text-sm bg-brand-red text-white hover:bg-red-700 transition-colors">Save Changes</button>
+      </div>
+    </div>
+  </main>
+  <script src="app.js"></script>
+</body></html>

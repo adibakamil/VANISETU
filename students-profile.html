@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>VaaniSetu — Student Profile</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<script>
+    tailwind.config = { theme: { extend: {
+      fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] },
+      colors: { brand: { red:'#C91F2B', bg:'#F8F5EF', text:'#334155', muted:'#64748B', border:'#E2E8F0' },
+                status: { green:'#10B981', red:'#EF4444', orange:'#F59E0B', purple:'#8B5CF6', blue:'#3B82F6', teal:'#14B8A6' } },
+      boxShadow: { 'card':'0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -1px rgba(0,0,0,0.03)' },
+      borderRadius: { 'xl':'1rem' } } } }
+</script>
+<style>
+  body { background-color:#F8F5EF; color:#334155; }
+  ::-webkit-scrollbar { width:6px; height:6px; }
+  ::-webkit-scrollbar-track { background:transparent; }
+  ::-webkit-scrollbar-thumb { background:#CBD5E1; border-radius:3px; }
+  .tribal-art { background-image:url(https://lh3.googleusercontent.com/aida-public/AB6AXuDy0a0SgHYmWZXASxHtvY-4m3NV0QHxeUSSISkgD1uR5IGuQ9Z8-CNpXRd3n3QcfzxTEy92IDNHOdMKFIruy1f1t07w63oot7N79f2_tId8pk-WVsChHCr-W2U990JQNJRaryz2FZhGoMwL01qBmTBVUFY3Ze7bYyS7n7yGq5_eiZQgrNTe2ovRKo_LBgL-JyjjJXwvbwOcZF6PcX0nOOqkWfZadocW1OKhuoTiaQ26XxD357eriNDP_w); background-size:cover; background-position:bottom; opacity:0.15; }
+  @media (max-width:1024px){ #layout-sidebar{ position:fixed; left:0; top:0; transform:translateX(-100%); transition:transform .3s ease; z-index:40; } body.sidebar-open #layout-sidebar{ transform:translateX(0); } body.sidebar-open::after{ content:''; position:fixed; inset:0; background:rgba(0,0,0,.4); z-index:30; } }
+</style>
+</head>
+<body class="font-sans antialiased h-screen flex overflow-hidden" data-page="students">
+  <aside id="layout-sidebar"></aside>
+  <main class="flex-1 flex flex-col h-full overflow-hidden relative">
+    <div id="layout-topbar"></div>
+    <div class="flex-1 overflow-y-auto p-8 relative z-10">
+      <a href="students.html" class="text-sm text-brand-red font-medium hover:underline mb-4 inline-block"><i class="fa-solid fa-arrow-left mr-1"></i> Back to Students</a>
+
+      <!-- Overview -->
+      <div class="bg-white rounded-xl border border-gray-100 shadow-card p-6 mb-6 flex flex-col md:flex-row md:items-center gap-5">
+        <div class="w-16 h-16 rounded-full bg-brand-red text-white flex items-center justify-center font-bold text-2xl flex-shrink-0">AS</div>
+        <div class="flex-1">
+          <h2 class="text-2xl font-bold text-gray-900">Aarav Sharma</h2>
+          <p class="text-brand-muted">Class 6A · Roll #12</p>
+        </div>
+        <div class="grid grid-cols-3 gap-6 text-center">
+          <div><p class="text-2xl font-bold text-gray-900">86%</p><p class="text-xs text-brand-muted">Understanding</p></div>
+          <div><p class="text-2xl font-bold text-gray-900">94%</p><p class="text-xs text-brand-muted">Attendance</p></div>
+          <div><p class="text-2xl font-bold text-status-green">Strong</p><p class="text-xs text-brand-muted">Status</p></div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+        <!-- Concept Mastery -->
+        <div class="bg-white rounded-xl border border-gray-100 shadow-card p-6">
+          <h3 class="font-bold text-gray-900 mb-4">Concept Mastery</h3>
+          <div class="space-y-4">
+            <div><div class="flex justify-between text-sm mb-1"><span class="text-gray-700">Photosynthesis</span><span class="font-semibold">88%</span></div><div class="w-full h-2 bg-gray-100 rounded-full overflow-hidden"><div class="h-full bg-brand-red rounded-full" style="width:88%"></div></div></div>
+            <div><div class="flex justify-between text-sm mb-1"><span class="text-gray-700">Fractions</span><span class="font-semibold">72%</span></div><div class="w-full h-2 bg-gray-100 rounded-full overflow-hidden"><div class="h-full bg-brand-red rounded-full" style="width:72%"></div></div></div>
+            <div><div class="flex justify-between text-sm mb-1"><span class="text-gray-700">Local Geography</span><span class="font-semibold">90%</span></div><div class="w-full h-2 bg-gray-100 rounded-full overflow-hidden"><div class="h-full bg-brand-red rounded-full" style="width:90%"></div></div></div>
+          </div>
+        </div>
+        <!-- Assessment Performance -->
+        <div class="bg-white rounded-xl border border-gray-100 shadow-card p-6">
+          <h3 class="font-bold text-gray-900 mb-4">Assessment Performance</h3>
+          <div class="space-y-3">
+            <div class="flex items-center justify-between p-3 rounded-lg bg-gray-50"><span class="text-sm text-gray-700">Mid-term Science</span><span class="font-semibold text-gray-900">82%</span></div>
+            <div class="flex items-center justify-between p-3 rounded-lg bg-gray-50"><span class="text-sm text-gray-700">Math Quiz 3</span><span class="font-semibold text-gray-900">76%</span></div>
+            <div class="flex items-center justify-between p-3 rounded-lg bg-gray-50"><span class="text-sm text-gray-700">Hindi Comprehension</span><span class="font-semibold text-gray-900">91%</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <!-- Confusion Alerts -->
+        <div class="bg-white rounded-xl border border-gray-100 shadow-card p-6">
+          <h3 class="font-bold text-gray-900 mb-4">Confusion Alerts</h3>
+          <div class="p-4 rounded-lg bg-yellow-50 border border-yellow-100 text-sm text-brand-text">
+            <i class="fa-solid fa-triangle-exclamation text-status-orange mr-2"></i> Showed hesitation with <span class="font-semibold">word problems</span> in the last Math lesson.
+          </div>
+        </div>
+        <!-- AI Recommendations -->
+        <div class="bg-white rounded-xl border border-gray-100 shadow-card p-6">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="w-8 h-8 rounded-lg bg-brand-red text-white flex items-center justify-center"><i class="fa-solid fa-wand-magic-sparkles"></i></span>
+            <h3 class="font-bold text-gray-900">AI Recommendations</h3>
+          </div>
+          <ul class="text-sm text-brand-text space-y-2 list-disc list-inside">
+            <li>Assign a 5-minute visual recap on word problems.</li>
+            <li>Pair with a peer tutor during the next Math block.</li>
+            <li>Switch Hindi instructions to audio for better recall.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </main>
+  <script src="app.js"></script>
+</body></html>
