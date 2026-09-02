@@ -265,18 +265,46 @@
     });
   }
 
+  /* ── Force-reveal fallback ──
+     Guarantees NO element ever stays invisible. Reveals anything still hidden
+     after load / a short timeout, even if IntersectionObserver never fires. */
+  function forceRevealAll() {
+    document.querySelectorAll('[data-reveal]:not(.revealed)').forEach(function (e) {
+      var st = getComputedStyle(e);
+      if (parseFloat(st.opacity) < 1) {
+        e.classList.add('revealed');
+      }
+    });
+    document.querySelectorAll('.dash-load:not(.dash-in)').forEach(function (e) {
+      var st = getComputedStyle(e);
+      if (parseFloat(st.opacity) < 1) {
+        e.classList.add('dash-in');
+      }
+    });
+    document.querySelectorAll('.hero-enter:not(.h-in)').forEach(function (e) {
+      var st = getComputedStyle(e);
+      if (parseFloat(st.opacity) < 1) {
+        e.classList.add('h-in');
+      }
+    });
+  }
+
   /* ── Init all on DOM ready ── */
   function init() {
-    initReveals();
-    initProgressBars();
-    initCountObserver();
-    initCharts();
-    initDonuts();
-    initDashboardLoad();
-    initHeroEnter();
-    initOfflineSync();
-    initAlertToggle();
-    initToastAndIcons();
+    try { initReveals(); } catch (e) {}
+    try { initProgressBars(); } catch (e) {}
+    try { initCountObserver(); } catch (e) {}
+    try { initCharts(); } catch (e) {}
+    try { initDonuts(); } catch (e) {}
+    try { initDashboardLoad(); } catch (e) {}
+    try { initHeroEnter(); } catch (e) {}
+    try { initOfflineSync(); } catch (e) {}
+    try { initAlertToggle(); } catch (e) {}
+    try { initToastAndIcons(); } catch (e) {}
+
+    /* Reveal above-the-fold and anything not caught by observers. */
+    setTimeout(forceRevealAll, 800);
+    window.addEventListener('load', forceRevealAll);
   }
 
   if (document.readyState === 'loading') {
