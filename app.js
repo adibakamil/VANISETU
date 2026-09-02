@@ -17,7 +17,7 @@
 
   var navHtml = nav.map(function (n) {
     var active = n.key === page;
-    var cls = 'flex items-center gap-3 px-4 py-3 rounded-lg font-medium transition-colors ' +
+    var cls = 'flex items-center gap-3 px-4 py-3 rounded-lg font-medium transition-colors nav-link-hover ' +
       (active ? 'bg-brand-red text-white' : 'text-brand-text hover:bg-gray-50');
     var inner = '<div class="flex items-center gap-3"><i class="fa-solid ' + n.icon + ' w-5 text-center"></i> ' + n.label + '</div>';
     if (n.badge) {
@@ -80,5 +80,23 @@
     toggle.addEventListener('click', function () {
       document.body.classList.toggle('sidebar-open');
     });
+  }
+
+  /* Inject shared animation system for all pages */
+  if (!document.querySelector('link[href="animations.css"]')) {
+    var css = document.createElement('link');
+    css.rel = 'stylesheet';
+    css.href = 'animations.css';
+    document.head.appendChild(css);
+  }
+  if (!document.getElementById('animations-js')) {
+    var js = document.createElement('script');
+    js.id = 'animations-js';
+    js.src = 'animations.js';
+    document.body.appendChild(js);
+  }
+  var main = document.querySelector('main');
+  if (main && !main.classList.contains('page-content')) {
+    main.classList.add('page-content');
   }
 })();
