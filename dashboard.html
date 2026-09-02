@@ -7,7 +7,6 @@
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
-<link href="animations.css" rel="stylesheet"/>
 <script>
     tailwind.config = {
       theme: {
@@ -159,7 +158,7 @@
         </div>
 <div class="relative ml-2">
 <button class="text-gray-500 hover:text-gray-700 relative p-2">
-<i class="fa-regular fa-bell text-xl anim-icon-bell"></i>
+<i class="fa-regular fa-bell text-xl"></i>
 <span class="absolute top-0 right-0 w-4 h-4 bg-brand-red text-white text-[10px] font-bold rounded-full flex items-center justify-center border-2 border-white">3</span>
 </button>
 </div>
@@ -176,7 +175,7 @@
 </header>
 <!-- END: Top Header -->
 <!-- BEGIN: Dashboard Content -->
-<div class="flex-1 overflow-y-auto p-8 relative z-10 page-content">
+<div class="flex-1 overflow-y-auto p-8 relative z-10">
 <!-- Welcome Section -->
 <div class="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4">
 <div>
@@ -198,7 +197,7 @@
 <i class="fa-solid fa-chevron-down text-xs"></i>
 </div>
 </div>
-<button class="bg-brand-red text-white px-6 py-2.5 rounded-lg font-medium text-sm flex items-center gap-2 hover:bg-red-700 transition-colors shadow-sm anim-btn">
+<button class="bg-brand-red text-white px-6 py-2.5 rounded-lg font-medium text-sm flex items-center gap-2 hover:bg-red-700 transition-colors shadow-sm">
 <i class="fa-solid fa-play"></i> Start New Lesson
           </button>
 </div>
@@ -206,12 +205,12 @@
 <!-- KPI Cards Row -->
 <div class="grid grid-cols-1 md:grid-cols-5 gap-4 mb-6">
 <!-- Card 1 -->
-<div class="bg-white rounded-xl p-5 shadow-card border border-gray-100 flex items-center gap-4 anim-card dash-load">
+<div class="bg-white rounded-xl p-5 shadow-card border border-gray-100 flex items-center gap-4">
 <div class="w-12 h-12 rounded-full bg-red-100 text-brand-red flex items-center justify-center text-xl flex-shrink-0">
 <i class="fa-solid fa-users"></i>
 </div>
 <div>
-<h3 class="text-2xl font-bold text-gray-900 leading-tight"><span data-count="24">0</span></h3>
+<h3 class="text-2xl font-bold text-gray-900 leading-tight">24</h3>
 <p class="text-sm font-medium text-gray-700">Students</p>
 <p class="text-xs text-status-green font-medium mt-1 flex items-center gap-1">
 <i class="fa-solid fa-arrow-up"></i> 2 <span class="text-brand-muted font-normal">from last week</span>
@@ -219,12 +218,12 @@
 </div>
 </div>
 <!-- Card 2 -->
-<div class="bg-white rounded-xl p-5 shadow-card border border-gray-100 flex items-center gap-4 anim-card dash-load">
+<div class="bg-white rounded-xl p-5 shadow-card border border-gray-100 flex items-center gap-4">
 <div class="w-12 h-12 rounded-full bg-purple-100 text-status-purple flex items-center justify-center text-xl flex-shrink-0">
 <i class="fa-solid fa-book-open"></i>
 </div>
 <div>
-<h3 class="text-2xl font-bold text-gray-900 leading-tight"><span data-count="8">0</span></h3>
+<h3 class="text-2xl font-bold text-gray-900 leading-tight">8</h3>
 <p class="text-sm font-medium text-gray-700">Lessons Taught</p>
 <p class="text-xs text-status-green font-medium mt-1 flex items-center gap-1">
 <i class="fa-solid fa-arrow-up"></i> 1 <span class="text-brand-muted font-normal">from last week</span>
@@ -232,12 +231,12 @@
 </div>
 </div>
 <!-- Card 3 -->
-<div class="bg-white rounded-xl p-5 shadow-card border border-gray-100 flex items-center gap-4 anim-card dash-load">
+<div class="bg-white rounded-xl p-5 shadow-card border border-gray-100 flex items-center gap-4">
 <div class="w-12 h-12 rounded-full bg-green-100 text-status-green flex items-center justify-center text-xl flex-shrink-0">
 <i class="fa-solid fa-bullseye"></i>
 </div>
 <div>
-<h3 class="text-2xl font-bold text-gray-900 leading-tight"><span data-count="76" data-suffix="%">0%</span></h3>
+<h3 class="text-2xl font-bold text-gray-900 leading-tight">76%</h3>
 <p class="text-sm font-medium text-gray-700">Avg. Understanding</p>
 <p class="text-xs text-status-green font-medium mt-1 flex items-center gap-1">
 <i class="fa-solid fa-arrow-up"></i> 12% <span class="text-brand-muted font-normal">from last week</span>
@@ -245,12 +244,12 @@
 </div>
 </div>
 <!-- Card 4 -->
-<div class="bg-white rounded-xl p-5 shadow-card border border-gray-100 flex items-center gap-4 anim-card dash-load">
+<div class="bg-white rounded-xl p-5 shadow-card border border-gray-100 flex items-center gap-4">
 <div class="w-12 h-12 rounded-full bg-yellow-100 text-status-orange flex items-center justify-center text-xl flex-shrink-0">
 <i class="fa-solid fa-triangle-exclamation"></i>
 </div>
 <div>
-<h3 class="text-2xl font-bold text-gray-900 leading-tight"><span data-count="3">0</span></h3>
+<h3 class="text-2xl font-bold text-gray-900 leading-tight">3</h3>
 <p class="text-sm font-medium text-gray-700 leading-tight">Concepts Need Attention</p>
 <p class="text-xs text-status-red font-medium mt-1 flex items-center gap-1">
 <i class="fa-solid fa-arrow-down"></i> 2 <span class="text-brand-muted font-normal">from last week</span>
@@ -258,12 +257,12 @@
 </div>
 </div>
 <!-- Card 5 -->
-<div class="bg-white rounded-xl p-5 shadow-card border border-gray-100 flex items-center gap-4 anim-card dash-load">
+<div class="bg-white rounded-xl p-5 shadow-card border border-gray-100 flex items-center gap-4">
 <div class="w-12 h-12 rounded-full bg-blue-100 text-status-blue flex items-center justify-center text-xl flex-shrink-0">
 <i class="fa-solid fa-arrows-rotate"></i>
 </div>
 <div>
-<h3 class="text-2xl font-bold text-gray-900 leading-tight"><span data-count="128">0</span></h3>
+<h3 class="text-2xl font-bold text-gray-900 leading-tight">128</h3>
 <p class="text-sm font-medium text-gray-700">Responses Today</p>
 <p class="text-xs text-status-green font-medium mt-1 flex items-center gap-1">
 <i class="fa-solid fa-arrow-up"></i> 27% <span class="text-brand-muted font-normal">from last week</span>
@@ -274,15 +273,15 @@
 <!-- Main Grid (3 columns layout) -->
 <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-6">
 <!-- Left Column: Concept Map & Distribution -->
-<div class="lg:col-span-5 flex flex-col gap-6 dash-load">
+<div class="lg:col-span-5 flex flex-col gap-6">
 <!-- Concept Understanding Map -->
-<div class="bg-white rounded-xl shadow-card border border-gray-100 overflow-hidden flex flex-col h-[400px] anim-card">
+<div class="bg-white rounded-xl shadow-card border border-gray-100 overflow-hidden flex flex-col h-[400px]">
 <div class="p-5 border-b border-gray-100 flex justify-between items-center">
 <h3 class="font-bold text-gray-900 flex items-center gap-2">
 <i class="fa-solid fa-brain text-brand-red"></i> CONCEPT UNDERSTANDING MAP
               </h3>
 <a class="text-xs font-semibold text-brand-muted hover:text-brand-red flex items-center gap-1" href="concept-map.html">
-                View Details <i class="fa-solid fa-arrow-right anim-icon-arrow"></i>
+                View Details <i class="fa-solid fa-arrow-right"></i>
 </a>
 </div>
 <div class="p-5 flex-1 overflow-y-auto">
@@ -305,7 +304,7 @@
 <td class="py-3">
 <div class="flex items-center gap-2">
 <div class="w-24 h-2 bg-gray-100 rounded-full overflow-hidden">
-<div class="bg-status-green h-full rounded-full" style="width:0" data-progress="86"></div>
+<div class="bg-status-green h-full rounded-full" style="width: 86%"></div>
 </div>
 <span class="text-xs font-medium text-gray-600">86%</span>
 </div>
@@ -322,7 +321,7 @@
 <td class="py-3">
 <div class="flex items-center gap-2">
 <div class="w-24 h-2 bg-gray-100 rounded-full overflow-hidden">
-<div class="bg-status-orange h-full rounded-full" style="width:0" data-progress="68"></div>
+<div class="bg-status-orange h-full rounded-full" style="width: 68%"></div>
 </div>
 <span class="text-xs font-medium text-gray-600">68%</span>
 </div>
@@ -339,7 +338,7 @@
 <td class="py-3">
 <div class="flex items-center gap-2">
 <div class="w-16 h-2 bg-gray-100 rounded-full overflow-hidden">
-<div class="bg-status-red h-full rounded-full" style="width:0" data-progress="41"></div>
+<div class="bg-status-red h-full rounded-full" style="width: 41%"></div>
 </div>
 <span class="text-xs font-medium text-gray-600">41%</span>
 <span class="text-[10px] bg-red-50 text-status-red px-1.5 py-0.5 rounded font-medium ml-1">Needs Attention</span>
@@ -357,7 +356,7 @@
 <td class="py-3">
 <div class="flex items-center gap-2">
 <div class="w-24 h-2 bg-gray-100 rounded-full overflow-hidden">
-<div class="bg-status-blue h-full rounded-full" style="width:0" data-progress="62"></div>
+<div class="bg-status-blue h-full rounded-full" style="width: 62%"></div>
 </div>
 <span class="text-xs font-medium text-gray-600">62%</span>
 </div>
@@ -374,7 +373,7 @@
 <td class="py-3">
 <div class="flex items-center gap-2">
 <div class="w-24 h-2 bg-gray-100 rounded-full overflow-hidden">
-<div class="bg-status-purple h-full rounded-full" style="width:0" data-progress="74"></div>
+<div class="bg-status-purple h-full rounded-full" style="width: 74%"></div>
 </div>
 <span class="text-xs font-medium text-gray-600">74%</span>
 </div>
@@ -401,9 +400,9 @@
 </div>
 </div>
 <!-- Middle Column: Performance Chart & Alerts -->
-<div class="lg:col-span-4 flex flex-col gap-6 dash-load">
+<div class="lg:col-span-4 flex flex-col gap-6">
 <!-- Class Performance Over Time -->
-<div class="bg-white rounded-xl shadow-card border border-gray-100 p-5 flex flex-col h-[400px] anim-card">
+<div class="bg-white rounded-xl shadow-card border border-gray-100 p-5 flex flex-col h-[400px]">
 <div class="flex justify-between items-center mb-4">
 <h3 class="font-bold text-gray-900 flex items-center gap-2">
 <i class="fa-solid fa-chart-line text-brand-red"></i> CLASS PERFORMANCE OVER TIME
@@ -443,7 +442,7 @@
 <span>18 May</span>
 </div>
 <!-- Mock SVG Lines -->
-<svg class="absolute inset-0 w-full h-full" data-chart style="padding-bottom: 24px; padding-left: 8px;">
+<svg class="absolute inset-0 w-full h-full" style="padding-bottom: 24px; padding-left: 8px;">
 <!-- Grid lines -->
 <line stroke="#f1f5f9" stroke-width="1" x1="0" x2="100%" y1="20%" y2="20%"></line>
 <line stroke="#f1f5f9" stroke-width="1" x1="0" x2="100%" y1="40%" y2="40%"></line>
@@ -475,7 +474,7 @@
 </div>
 </div>
 <!-- Right Column: Quick Actions & Recent Activity -->
-<div class="lg:col-span-3 flex flex-col gap-6 dash-load">
+<div class="lg:col-span-3 flex flex-col gap-6">
 <!-- Quick Actions -->
 <div class="bg-transparent h-[180px] flex flex-col">
 <h3 class="font-bold text-gray-900 mb-3 flex items-center gap-2 text-sm uppercase">
@@ -489,7 +488,7 @@
 <div class="flex-1">
 <span class="text-xs font-semibold text-gray-800 leading-tight block">Generate Worksheet</span>
 </div>
-<i class="fa-solid fa-chevron-right text-gray-300 text-xs anim-icon-chevron"></i>
+<i class="fa-solid fa-chevron-right text-gray-300 text-xs"></i>
 </a>
 <a href="flashcards.html" class="bg-white rounded-xl shadow-sm border border-gray-100 p-3 flex items-center gap-3 hover:shadow-md transition-shadow text-left">
 <div class="w-8 h-8 rounded-lg bg-purple-50 text-status-purple flex items-center justify-center flex-shrink-0">
@@ -498,7 +497,7 @@
 <div class="flex-1">
 <span class="text-xs font-semibold text-gray-800 leading-tight block">Create Flashcards</span>
 </div>
-<i class="fa-solid fa-chevron-right text-gray-300 text-xs anim-icon-chevron"></i>
+<i class="fa-solid fa-chevron-right text-gray-300 text-xs"></i>
 </a>
 <a href="assessments.html" class="bg-white rounded-xl shadow-sm border border-gray-100 p-3 flex items-center gap-3 hover:shadow-md transition-shadow text-left">
 <div class="w-8 h-8 rounded-lg bg-green-50 text-status-green flex items-center justify-center flex-shrink-0">
@@ -507,7 +506,7 @@
 <div class="flex-1">
 <span class="text-xs font-semibold text-gray-800 leading-tight block">Start Assessment</span>
 </div>
-<i class="fa-solid fa-chevron-right text-gray-300 text-xs anim-icon-chevron"></i>
+<i class="fa-solid fa-chevron-right text-gray-300 text-xs"></i>
 </a>
 <a href="reports.html" class="bg-white rounded-xl shadow-sm border border-gray-100 p-3 flex items-center gap-3 hover:shadow-md transition-shadow text-left">
 <div class="w-8 h-8 rounded-lg bg-orange-50 text-status-orange flex items-center justify-center flex-shrink-0">
@@ -516,7 +515,7 @@
 <div class="flex-1">
 <span class="text-xs font-semibold text-gray-800 leading-tight block">View Reports</span>
 </div>
-<i class="fa-solid fa-chevron-right text-gray-300 text-xs anim-icon-chevron"></i>
+<i class="fa-solid fa-chevron-right text-gray-300 text-xs"></i>
 </a>
 </div>
 </div>
@@ -527,12 +526,12 @@
 <i class="fa-solid fa-clock-rotate-left text-brand-red"></i> Recent Activity
               </h3>
 <a class="text-xs font-semibold text-brand-muted hover:text-brand-red flex items-center gap-1" href="reports.html">
-                View All <i class="fa-solid fa-arrow-right anim-icon-arrow"></i>
+                View All <i class="fa-solid fa-arrow-right"></i>
 </a>
 </div>
 <div class="flex-1 overflow-y-auto space-y-4">
 <!-- Item 1 -->
-<div class="flex gap-3" data-reveal data-delay="0">
+<div class="flex gap-3">
 <div class="w-8 h-8 rounded-full bg-green-50 text-status-green flex items-center justify-center flex-shrink-0 mt-0.5">
 <i class="fa-solid fa-check"></i>
 </div>
@@ -545,7 +544,7 @@
 </div>
 </div>
 <!-- Item 2 -->
-<div class="flex gap-3" data-reveal data-delay="100">
+<div class="flex gap-3">
 <div class="w-8 h-8 rounded-full bg-purple-50 text-status-purple flex items-center justify-center flex-shrink-0 mt-0.5">
 <i class="fa-solid fa-file-lines"></i>
 </div>
@@ -558,7 +557,7 @@
 </div>
 </div>
 <!-- Item 3 -->
-<div class="flex gap-3" data-reveal data-delay="200">
+<div class="flex gap-3">
 <div class="w-8 h-8 rounded-full bg-orange-50 text-status-orange flex items-center justify-center flex-shrink-0 mt-0.5">
 <i class="fa-solid fa-triangle-exclamation"></i>
 </div>
@@ -571,7 +570,7 @@
 </div>
 </div>
 <!-- Item 4 -->
-<div class="flex gap-3" data-reveal data-delay="300">
+<div class="flex gap-3">
 <div class="w-8 h-8 rounded-full bg-blue-50 text-status-blue flex items-center justify-center flex-shrink-0 mt-0.5">
 <i class="fa-solid fa-book"></i>
 </div>
@@ -590,14 +589,14 @@
 <!-- Bottom Grid (3 columns for smaller charts) -->
 <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
 <!-- Understanding Distribution -->
-<div class="bg-white rounded-xl shadow-card border border-gray-100 p-5 dash-load anim-card">
+<div class="bg-white rounded-xl shadow-card border border-gray-100 p-5">
 <h3 class="font-bold text-gray-900 mb-4 flex items-center gap-2 text-sm uppercase">
 <i class="fa-solid fa-chart-pie text-brand-red"></i> Understanding Distribution
           </h3>
 <div class="flex items-center gap-6">
 <!-- Donut Chart Placeholder (CSS simulated) -->
 <div class="relative w-32 h-32 flex-shrink-0">
-<svg class="w-full h-full" viewbox="0 0 36 36" data-donut>
+<svg class="w-full h-full" viewbox="0 0 36 36">
 <!-- Needs Support (Red) -->
 <path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#EF4444" stroke-dasharray="25, 100" stroke-width="4"></path>
 <!-- Moderate (Orange) -->
@@ -606,7 +605,7 @@
 <path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#10B981" stroke-dasharray="33, 100" stroke-dashoffset="-67" stroke-width="4"></path>
 </svg>
 <div class="absolute inset-0 flex flex-col items-center justify-center">
-<span class="text-2xl font-bold text-gray-900 leading-none" data-count="24">0</span>
+<span class="text-2xl font-bold text-gray-900 leading-none">24</span>
 <span class="text-[10px] text-gray-500 font-medium mt-1">Students</span>
 </div>
 </div>
@@ -639,19 +638,19 @@
           </div>
 </div>
 <!-- Confusion Alerts -->
-<div class="bg-white rounded-xl shadow-card border border-gray-100 p-5 dash-load">
+<div class="bg-white rounded-xl shadow-card border border-gray-100 p-5">
 <div class="flex justify-between items-center mb-4">
 <h3 class="font-bold text-gray-900 flex items-center gap-2 text-sm uppercase">
 <i class="fa-solid fa-radar text-brand-red"></i> Confusion Alerts
             </h3>
 <a class="text-xs font-semibold text-brand-muted hover:text-brand-red flex items-center gap-1 border border-gray-200 rounded px-2 py-0.5" href="concept-map.html">
-              View All <i class="fa-solid fa-arrow-right anim-icon-arrow"></i>
+              View All <i class="fa-solid fa-arrow-right"></i>
 </a>
 </div>
 <div class="space-y-3">
 <!-- Alert 1 -->
-<div class="border border-red-100 rounded-lg p-3 hover:shadow-sm transition-shadow cursor-pointer relative priority-high" data-alert>
-<span class="absolute top-3 right-3 text-gray-400"><i class="fa-solid fa-chevron-right text-xs anim-icon-chevron"></i></span>
+<div class="border border-red-100 rounded-lg p-3 hover:shadow-sm transition-shadow cursor-pointer relative">
+<span class="absolute top-3 right-3 text-gray-400"><i class="fa-solid fa-chevron-right text-xs"></i></span>
 <span class="inline-block bg-status-red text-white text-[10px] font-bold px-2 py-0.5 rounded-full mb-1">High Priority</span>
 <h4 class="text-sm font-bold text-gray-900">Chlorophyll</h4>
 <p class="text-xs text-brand-muted mb-2">12 students showing repeated confusion</p>
@@ -661,15 +660,15 @@
 <span class="font-medium text-gray-700">Understanding: 41%</span>
 </div>
 <div class="w-full h-1.5 bg-gray-100 rounded-full overflow-hidden">
-<div class="bg-status-red h-full rounded-full" style="width:41%" data-progress="41"></div>
+<div class="bg-status-red h-full rounded-full" style="width: 41%"></div>
 </div>
 </div>
 <a href="concept-map.html" class="text-[10px] font-semibold text-brand-red border border-red-200 bg-red-50 px-2 py-1 rounded">View Details</a>
 </div>
 </div>
 <!-- Alert 2 -->
-<div class="border border-orange-100 rounded-lg p-3 hover:shadow-sm transition-shadow cursor-pointer relative" data-alert>
-<span class="absolute top-3 right-3 text-gray-400"><i class="fa-solid fa-chevron-right text-xs anim-icon-chevron"></i></span>
+<div class="border border-orange-100 rounded-lg p-3 hover:shadow-sm transition-shadow cursor-pointer relative">
+<span class="absolute top-3 right-3 text-gray-400"><i class="fa-solid fa-chevron-right text-xs"></i></span>
 <span class="inline-block bg-status-orange text-white text-[10px] font-bold px-2 py-0.5 rounded-full mb-1">Medium Priority</span>
 <h4 class="text-sm font-bold text-gray-900">Role of Sunlight</h4>
 <p class="text-xs text-brand-muted mb-2">6 students showing partial understanding</p>
@@ -679,7 +678,7 @@
 <span class="font-medium text-gray-700">Understanding: 68%</span>
 </div>
 <div class="w-full h-1.5 bg-gray-100 rounded-full overflow-hidden">
-<div class="bg-status-orange h-full rounded-full" style="width:68%" data-progress="68"></div>
+<div class="bg-status-orange h-full rounded-full" style="width: 68%"></div>
 </div>
 </div>
 <a href="concept-map.html" class="text-[10px] font-semibold text-status-orange border border-orange-200 bg-orange-50 px-2 py-1 rounded">View Details</a>
@@ -688,14 +687,14 @@
 </div>
 </div>
 <!-- Language Usage -->
-<div class="bg-white rounded-xl shadow-card border border-gray-100 p-5 dash-load">
+<div class="bg-white rounded-xl shadow-card border border-gray-100 p-5">
 <h3 class="font-bold text-gray-900 mb-4 flex items-center gap-2 text-sm uppercase">
 <i class="fa-solid fa-chart-bar text-brand-red"></i> Language Usage
           </h3>
 <div class="flex items-center gap-6 mt-6">
 <!-- Donut Chart Placeholder -->
 <div class="relative w-28 h-28 flex-shrink-0">
-<svg class="w-full h-full" viewbox="0 0 36 36" data-donut>
+<svg class="w-full h-full" viewbox="0 0 36 36">
 <!-- Mundari (Pink) -->
 <path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#EC4899" stroke-dasharray="58, 100" stroke-width="6"></path>
 <!-- Hindi (Yellow) -->
@@ -748,8 +747,8 @@
 <div class="relative z-10">
 <h3 class="text-lg font-bold mb-1">From Translation to True Understanding</h3>
 <p class="text-sm text-white/80 mb-3 leading-snug">VaaniSetu doesn't stop at translation. It ensures every child understands the concept and helps you know what to teach again.</p>
-<button class="bg-white text-brand-red px-4 py-1.5 rounded-full text-xs font-bold hover:bg-gray-50 transition-colors flex items-center gap-2 w-max anim-btn">
-              Know More About VaaniSetu <i class="fa-solid fa-arrow-right anim-icon-arrow"></i>
+<button class="bg-white text-brand-red px-4 py-1.5 rounded-full text-xs font-bold hover:bg-gray-50 transition-colors flex items-center gap-2 w-max">
+              Know More About VaaniSetu <i class="fa-solid fa-arrow-right"></i>
 </button>
 </div>
 </div>
@@ -791,10 +790,10 @@
 <div class="text-status-red text-2xl"><i class="fa-solid fa-cloud-arrow-up"></i></div>
 <div>
 <p class="text-xs text-gray-800 font-medium leading-tight">When internet is available</p>
-<p class="text-[10px] text-status-orange font-medium mt-0.5"><span class="font-bold" data-count="38">0</span> items pending</p>
+<p class="text-[10px] text-status-orange font-medium mt-0.5"><span class="font-bold">38</span> items pending</p>
 </div>
 </div>
-<button class="w-full bg-white border border-brand-red text-brand-red py-1.5 rounded-lg text-xs font-bold hover:bg-red-50 transition-colors anim-btn" data-sync-btn data-status="online">
+<button class="w-full bg-white border border-brand-red text-brand-red py-1.5 rounded-lg text-xs font-bold hover:bg-red-50 transition-colors">
               Sync Now
             </button>
 </div>
@@ -804,5 +803,4 @@
 <!-- END: Dashboard Content -->
 </main>
 <!-- END: Main Content -->
-<script src="animations.js"></script>
 </body></html>
